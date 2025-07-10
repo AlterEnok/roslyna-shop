@@ -1,0 +1,85 @@
+/* ТЁМНЫЙ ФОН ДЛЯ СЕКЦИИ */
+.product-card-section {
+    background-color: #0e0e0e;
+    padding: 5rem 1rem;
+}
+
+/* КАРТОЧКА */
+.product-card {
+    max-width: 340px;
+    margin: 0 auto;
+    border-radius: 16px;
+    background: #fff;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+    transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.35s ease;
+    cursor: pointer;
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+}
+
+.product-card__image-wrapper {
+    overflow: hidden;
+    height: 230px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+}
+
+.product-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-card__image {
+    transform: scale(1.12);
+}
+
+.product-card__info {
+    padding: 1.8rem 2rem 2rem;
+    text-align: center;
+    color: #222;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.product-card__title {
+    font-size: 2rem;
+    font-weight: 800;
+    margin-bottom: 0.6rem;
+    background: linear-gradient(90deg, #f59e0b, #ef4444);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+.product-card__price {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    color: #666;
+    letter-spacing: 0.03em;
+}
+
+.product-card__button {
+    background-color: #ef4444;
+    color: white;
+    border: none;
+    padding: 0.85rem 2.2rem;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 6px 15px rgba(239, 68, 68, 0.4);
+    transition: background-color 0.4s ease, box-shadow 0.4s ease, transform 0.3s ease;
+}
+
+.product-card__button:hover {
+    background-color: #b91c1c;
+    box-shadow: 0 8px 25px rgba(185, 28, 28, 0.6);
+    transform: translateY(-2px);
+    cursor: pointer;
+}

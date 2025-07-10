@@ -1,0 +1,11 @@
+.app {
+  font-family: 'Inter', sans-serif;
+  color: #1a1a1a;
+  min-height: 100%;
+}
+
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
