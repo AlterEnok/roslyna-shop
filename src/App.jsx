@@ -7,6 +7,7 @@ import ContactTicker from './components/ContactTicker/ContactTicker';
 import Categories from './components/Categories/Categories';
 import ProductPage from './components/ProductPage/ProductPage';
 import ProductList from './components/ProductList/ProductList';
+import StatsSection from './components/StatsSection/StatsSection';
 import AuthModal from './components/AuthModal/AuthModal';
 
 import CartOverlay from './components/CartOverlay/CartOverlay';
@@ -121,7 +122,8 @@ function App() {
               <Hero />
               <ContactTicker />
               <Categories />
-              <ProductList addToCart={addToCart} />
+              <ProductList addToCart={addToCart} isPreview={true} />
+              <StatsSection />
             </>
           }
         />
