@@ -8,6 +8,7 @@ import Categories from './components/Categories/Categories';
 import ProductPage from './components/ProductPage/ProductPage';
 import ProductList from './components/ProductList/ProductList';
 import StatsSection from './components/StatsSection/StatsSection';
+import Reviews from './components/Reviews/Reviews';
 import AuthModal from './components/AuthModal/AuthModal';
 
 import CartOverlay from './components/CartOverlay/CartOverlay';
@@ -124,6 +125,7 @@ function App() {
               <Categories />
               <ProductList addToCart={addToCart} isPreview={true} />
               <StatsSection />
+              <Reviews />
             </>
           }
         />
