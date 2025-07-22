@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../assets/logo.png';
+import { useTranslation } from 'react-i18next';
 
 function Header({
   toggleCart,
@@ -14,6 +15,7 @@ function Header({
   toggleMenu,
   closeMenu,
 }) {
+  const { t } = useTranslation();
   const [isHighlight, setIsHighlight] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
@@ -52,14 +54,11 @@ function Header({
           </Link>
         </div>
 
-
-
         <nav className="header__nav">
-          <Link to="/catalog" className="header__link" onClick={closeMenu}>Каталог</Link>
-          <Link to="/about" className="header__link" onClick={closeMenu}>Про нас</Link>
-          <Link to="/contact" className="header__link" onClick={closeMenu}>Контакти</Link>
+          <Link to="/catalog" className="header__link" onClick={closeMenu}>{t('nav.catalog')}</Link>
+          <Link to="/about" className="header__link" onClick={closeMenu}>{t('nav.about')}</Link>
+          <Link to="/contact" className="header__link" onClick={closeMenu}>{t('nav.contact')}</Link>
         </nav>
-
 
         <div className="header__actions">
           {isAuthenticated ? (
@@ -67,16 +66,16 @@ function Header({
               <button className="user-icon" onClick={toggleDropdown}>👤</button>
               {showDropdown && (
                 <div className="user-dropdown__menu">
-                  <p>Hello, {user?.name || user?.email || 'User'}</p>
-                  <Link to="/profile" className="user-dropdown__link" onClick={closeMenu}>👤 Personal Account</Link>
-                  <Link to="/transactions" className="user-dropdown__link" onClick={closeMenu}>💳 Last Transactions</Link>
-                  <button onClick={() => { onLogout(); closeMenu(); }}>Logout</button>
+                  <p>{t('header.hello')}, {user?.name || user?.email || 'User'}</p>
+                  <Link to="/profile" className="user-dropdown__link" onClick={closeMenu}>👤 {t('header.profile')}</Link>
+                  <Link to="/transactions" className="user-dropdown__link" onClick={closeMenu}>💳 {t('header.transactions')}</Link>
+                  <button onClick={() => { onLogout(); closeMenu(); }}>{t('header.logout')}</button>
                 </div>
               )}
             </div>
           ) : (
             <button className="header__login" onClick={() => { onOpenAuth(); closeMenu(); }}>
-              Login / Register
+              {t('auth.login_register')}
             </button>
           )}
 
@@ -106,12 +105,12 @@ function Header({
 
       <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu--open' : ''}`}>
         <nav className="mobile-menu__nav">
-          <Link to="/catalog" className="header__link" onClick={closeMenu}>Каталог</Link>
-          <Link to="/about" className="header__link" onClick={closeMenu}>Про нас</Link>
-          <Link to="/contact" className="header__link" onClick={closeMenu}>Контакти</Link>
+          <Link to="/catalog" className="header__link" onClick={closeMenu}>{t('nav.catalog')}</Link>
+          <Link to="/about" className="header__link" onClick={closeMenu}>{t('nav.about')}</Link>
+          <Link to="/contact" className="header__link" onClick={closeMenu}>{t('nav.contact')}</Link>
           {!isAuthenticated && (
             <button className="mobile-menu__login" onClick={() => { onOpenAuth(); closeMenu(); }}>
-              Login / Register
+              {t('auth.login_register')}
             </button>
           )}
         </nav>

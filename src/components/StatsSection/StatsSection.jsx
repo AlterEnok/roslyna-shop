@@ -1,25 +1,28 @@
 import { useEffect, useRef, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './StatsSection.css';
 
-const stats = [
-    {
-        label: 'Продукция востребована как в аптеках, так и онлайн — общее количество продаж постоянно растёт.',
-        value: 10000,
-        suffix: '+',
-    },
-    {
-        label: 'Эффективность подтверждена — показатели основаны на наблюдениях и отзывах.',
-        value: 95,
-        suffix: '%',
-    },
-    {
-        label: 'Уровень доверия к нашей продукции.',
-        value: 100,
-        suffix: '%',
-    },
-];
-
 function StatsSection() {
+    const { t } = useTranslation();
+
+    const stats = [
+        {
+            label: t('stats.item1'),
+            value: 10000,
+            suffix: '+',
+        },
+        {
+            label: t('stats.item2'),
+            value: 95,
+            suffix: '%',
+        },
+        {
+            label: t('stats.item3'),
+            value: 100,
+            suffix: '%',
+        },
+    ];
+
     return (
         <section className="stats-section">
             {stats.map((stat, i) => (
@@ -45,7 +48,7 @@ function StatBox({ label, value, suffix, delay }) {
             ([entry]) => {
                 if (entry.isIntersecting) {
                     setIsVisible(true);
-                    observer.unobserve(entry.target); // отсоединяем только от этой карточки
+                    observer.unobserve(entry.target);
                 }
             },
             { threshold: 0.3 }

@@ -1,7 +1,9 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import './AuthModal.css';
 
 function AuthModal({ onClose, onLogin }) {
+    const { t } = useTranslation();
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -13,7 +15,7 @@ function AuthModal({ onClose, onLogin }) {
         setLoading(true);
 
         try {
-            const response = await fetch('https://jsonplaceholder.typicode.com/users/1'); // потом доабвишь что нужно
+            const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
             const data = await response.json();
 
             const userData = {
@@ -26,8 +28,8 @@ function AuthModal({ onClose, onLogin }) {
             setPassword('');
             setUsername('');
         } catch (err) {
-            console.error('Auth error:', err)
-            alert('Ошибка авторизации!');
+            console.error('Auth error:', err);
+            alert(t('auth.error'));
         } finally {
             setLoading(false);
         }
@@ -40,15 +42,19 @@ function AuthModal({ onClose, onLogin }) {
                 <button className="auth-modal__close" onClick={onClose}>✕</button>
 
                 <div className="auth-modal__toggle">
-                    <button className={isLogin ? 'active' : ''} onClick={() => setIsLogin(true)}>Login</button>
-                    <button className={!isLogin ? 'active' : ''} onClick={() => setIsLogin(false)}>Register</button>
+                    <button className={isLogin ? 'active' : ''} onClick={() => setIsLogin(true)}>
+                        {t('auth.login')}
+                    </button>
+                    <button className={!isLogin ? 'active' : ''} onClick={() => setIsLogin(false)}>
+                        {t('auth.register')}
+                    </button>
                 </div>
 
                 <form className="auth-modal__form" onSubmit={handleSubmit}>
                     {!isLogin && (
                         <input
                             type="text"
-                            placeholder="Username"
+                            placeholder={t('auth.username')}
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
@@ -56,20 +62,24 @@ function AuthModal({ onClose, onLogin }) {
                     )}
                     <input
                         type="email"
-                        placeholder="Email"
+                        placeholder={t('auth.email')}
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <input
                         type="password"
-                        placeholder="Password"
+                        placeholder={t('auth.password')}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
                     <button type="submit" className="auth-modal__submit" disabled={loading}>
-                        {loading ? 'Loading...' : isLogin ? 'Login' : 'Register'}
+                        {loading
+                            ? t('auth.loading')
+                            : isLogin
+                                ? t('auth.login')
+                                : t('auth.register')}
                     </button>
                 </form>
             </div>

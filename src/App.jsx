@@ -9,7 +9,11 @@ import ProductPage from './components/ProductPage/ProductPage';
 import ProductList from './components/ProductList/ProductList';
 import StatsSection from './components/StatsSection/StatsSection';
 import Reviews from './components/Reviews/Reviews';
+import Location from './components/Location/Location';
+import Footer from './components/Footer/Footer';
 import AuthModal from './components/AuthModal/AuthModal';
+import LanguagePopup from './components/LanguagePopup/LanguagePopup';
+import './i18n';
 
 import CartOverlay from './components/CartOverlay/CartOverlay';
 import CartSidebar from './components/CartSidebar/CartSidebar';
@@ -93,6 +97,7 @@ function App() {
 
   return (
     <>
+      <LanguagePopup />
       <Header
         cartItems={cartItems}
         isAuthenticated={!!user}
@@ -126,6 +131,8 @@ function App() {
               <ProductList addToCart={addToCart} isPreview={true} />
               <StatsSection />
               <Reviews />
+              <Location />
+              <Footer />
             </>
           }
         />

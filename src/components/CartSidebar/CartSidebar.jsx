@@ -1,14 +1,17 @@
 import './CartSidebar.css';
+import { useTranslation } from 'react-i18next';
 
 function CartSidebar({ isOpen, items, onRemove, onIncrement, onDecrement }) {
+    const { t } = useTranslation();
+
     const total = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
     return (
         <aside className={`cart-sidebar ${isOpen ? 'cart-sidebar--open' : ''}`}>
-            <h2>Your Cart</h2>
+            <h2>{t('cart.title')}</h2>
 
             {items.length === 0 ? (
-                <p>Your cart is empty</p>
+                <p>{t('cart.empty')}</p>
             ) : (
                 <div className="cart-items">
                     {items.map(item => (
@@ -26,7 +29,7 @@ function CartSidebar({ isOpen, items, onRemove, onIncrement, onDecrement }) {
                             <button
                                 className="cart-item__remove"
                                 onClick={() => onRemove(item.id)}
-                                aria-label="Remove item"
+                                aria-label={t('cart.remove')}
                             >
                                 ×
                             </button>
@@ -34,7 +37,7 @@ function CartSidebar({ isOpen, items, onRemove, onIncrement, onDecrement }) {
                     ))}
 
                     <div className="cart-summary">
-                        <p>Total: ${total}</p>
+                        <p>{t('cart.total')}: ${total}</p>
                     </div>
                 </div>
             )}
