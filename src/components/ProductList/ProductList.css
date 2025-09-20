@@ -3,13 +3,23 @@
     text-align: center;
 }
 
-.product-list__grid {
+/* .product-list__grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 4rem;
     justify-content: center;
     align-items: stretch;
     max-width: 1200px;
+    margin: 0 auto;
+} */
+
+.product-list__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 4rem;
+    justify-content: center;
+    align-items: stretch;
+    max-width: 1300px;
     margin: 0 auto;
 }
 
@@ -20,13 +30,67 @@
     margin-bottom: 2.9rem;
     margin-left: 9.5rem;
     color: #fff;
-    line-height: 0.7;
+    line-height: 145%;
     font-family: 'Montserrat', sans-serif;
+}
+
+.product-list__button-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+
+.product-list__button {
+    position: relative;
+    display: inline-block;
+    font-size: clamp(1rem, 1.1vw, 1.2rem);
+    font-weight: 500;
+    color: white;
+    padding: 0.75rem 1.6rem;
+    border: 2px solid rgba(255, 255, 255, 0.66);
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(90, 130, 100, 0.4), rgba(50, 60, 60, 0.2));
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    backdrop-filter: blur(6px);
+}
+
+
+.product-list__button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+    z-index: 0;
+}
+
+.product-list__button:hover::before {
+    left: 100%;
+}
+
+.product-list__button:hover {
+    border-color: #fff;
 }
 
 @media (min-width: 1900px) and (max-width: 3500px) {
     .product-list__title {
         margin-left: 20rem;
+    }
+
+    .product-list__grid {
+        max-width: 1600px;
+        /* увеличиваем ширину контейнера */
+        grid-template-columns: repeat(4, 1fr);
+        /* фиксируем 4 карточки */
     }
 }
 

@@ -64,6 +64,7 @@
 }
 
 .category-card__label {
+    width: 85%;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -155,16 +156,14 @@
 
 @media (min-width: 1900px) and (max-width: 3500px) {
     .categories__grid {
-        gap: 1.2rem;
-        /* Было 2rem — теперь ближе */
-        max-width: 1400px;
-        /* Ограничим ширину, чтобы не разъезжались */
+        gap: 7rem;
+        max-width: 1700px;
         margin: 0 auto;
     }
 
     .category-card {
-        max-width: 240px;
-        /* Сделаем сами карточки немного уже */
+        max-width: 340px;
+
     }
 
     .categories {
@@ -173,8 +172,20 @@
     }
 }
 
-@media(max-width:768px) {
-    .category-card.raised {
-        transform: translateY(0);
+@media (max-width: 768px) {
+    .category-card {
+        transform: none !important;
+        opacity: 1 !important;
+        filter: none !important;
+    }
+
+    .category-card.fade-in,
+    .category-card.fade-in.raised {
+        transform: none !important;
+    }
+
+    .categories__grid {
+        gap: 1.5rem;
+
     }
 }

@@ -8,7 +8,7 @@ function StatsSection() {
     const stats = [
         {
             label: t('stats.item1'),
-            value: 10000,
+            value: 1000,
             suffix: '+',
         },
         {

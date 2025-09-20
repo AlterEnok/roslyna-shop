@@ -1,17 +1,25 @@
 import './Hero.css';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 import heroVideo from '../../assets/background.mp4';
 
 function Hero() {
     const [isVisible, setIsVisible] = useState(false);
-    const { t } = useTranslation();
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     useEffect(() => {
         const timer = setTimeout(() => setIsVisible(true), 100);
         return () => clearTimeout(timer);
     }, []);
+
+    // 🔥 блокировка скролла, когда модалка открыта
+    useEffect(() => {
+        if (isModalOpen) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+    }, [isModalOpen]);
 
     return (
         <section className="hero">
@@ -23,19 +31,42 @@ function Hero() {
             <div className="hero__overlay"></div>
 
             <div className={`hero__content ${isVisible ? 'show' : ''}`}>
-                <h1 className="hero__title">ROSLYNA KARPAT</h1>
+                <h1 className="hero__title">Рослина Карпат</h1>
                 <p className="hero__text">
-                    {t('hero.description')}
+                    «Сила карпатських трав у кожній капсулі — здоров’я, енергія та індивідуальний підбір«
                 </p>
                 <Link to="/catalog" className="hero__button">
-                    {t('hero.buy_now')}
+                    Купити зараз
                 </Link>
 
                 <div className="hero__footer-links">
-                    <Link to="/reviews" className="hero__footer-link">{t('hero.reviews')}</Link>
-                    <Link to="/blog" className="hero__footer-link">{t('hero.blog')}</Link>
+                    <Link to="/reviews" className="hero__footer-link">Відгуки</Link>
+                    <Link to="/blog" className="hero__footer-link">Блог</Link>
+                    <button
+                        className="hero__footer-link btn-link"
+                        onClick={() => setIsModalOpen(true)}
+                    >
+                        Партнерство
+                    </button>
+                    <Link to="/blog" className="hero__footer-link">Індивідуальний підбір</Link>
                 </div>
             </div>
+
+            {/* 🔥 модалка */}
+            {isModalOpen && (
+                <div className="modal-overlay" onClick={() => setIsModalOpen(false)}>
+                    <div className="modal" onClick={(e) => e.stopPropagation()}>
+                        <button className="modal-close" onClick={() => setIsModalOpen(false)}>×</button>
+                        <h2>Залиште заявку щоб стати партнером</h2>
+                        <form className="modal-form">
+                            <input type="text" placeholder="Ваше ім’я" required />
+                            <input type="tel" placeholder="Ваш номер телефону" required />
+                            <textarea placeholder="Ваше повідомлення" rows="4" required></textarea>
+                            <button type="submit">Надіслати</button>
+                        </form>
+                    </div>
+                </div>
+            )}
         </section>
     );
 }

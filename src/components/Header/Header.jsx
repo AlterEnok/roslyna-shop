@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../assets/logo.png';
-import { useTranslation } from 'react-i18next';
+import cartIcon from '../../assets/cart.png';
+import userIcon from '../../assets/user.png';
 
 function Header({
   toggleCart,
@@ -15,12 +16,12 @@ function Header({
   toggleMenu,
   closeMenu,
 }) {
-  const { t } = useTranslation();
   const [isHighlight, setIsHighlight] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
+  // Подсветка корзины при добавлении товара
   useEffect(() => {
     if (totalQuantity > 0) {
       setIsHighlight(true);
@@ -29,8 +30,28 @@ function Header({
     }
   }, [totalQuantity]);
 
+  // Открытие/закрытие дропа по клику
   const toggleDropdown = () => setShowDropdown((prev) => !prev);
 
+  // Автоматическое закрытие при клике вне блока
+  useEffect(() => {
+    const handleClickOutside = (e) => {
+      if (!e.target.closest('.user-dropdown')) {
+        setShowDropdown(false);
+      }
+    };
+    document.addEventListener('click', handleClickOutside);
+    return () => document.removeEventListener('click', handleClickOutside);
+  }, []);
+
+  // Закрывать дропдаун сразу после логина/регистрации
+  useEffect(() => {
+    if (isAuthenticated) {
+      setShowDropdown(false);
+    }
+  }, [isAuthenticated]);
+
+  // Скролл-эффект для шапки
   useEffect(() => {
     const header = document.querySelector('.header');
     const handleScroll = () => {
@@ -55,41 +76,70 @@ function Header({
         </div>
 
         <nav className="header__nav">
-          <Link to="/catalog" className="header__link" onClick={closeMenu}>{t('nav.catalog')}</Link>
-          <Link to="/about" className="header__link" onClick={closeMenu}>{t('nav.about')}</Link>
-          <Link to="/contact" className="header__link" onClick={closeMenu}>{t('nav.contact')}</Link>
+          <Link to="/catalog" className="header__link" onClick={closeMenu}>Каталог</Link>
+          <Link to="/about" className="header__link" onClick={closeMenu}>Про нас</Link>
+          <Link to="/contact" className="header__link" onClick={closeMenu}>Контакти</Link>
         </nav>
 
         <div className="header__actions">
           {isAuthenticated ? (
-            <div className="user-dropdown">
-              <button className="user-icon" onClick={toggleDropdown}>👤</button>
-              {showDropdown && (
-                <div className="user-dropdown__menu">
-                  <p>{t('header.hello')}, {user?.name || user?.email || 'User'}</p>
-                  <Link to="/profile" className="user-dropdown__link" onClick={closeMenu}>👤 {t('header.profile')}</Link>
-                  <Link to="/transactions" className="user-dropdown__link" onClick={closeMenu}>💳 {t('header.transactions')}</Link>
-                  <button onClick={() => { onLogout(); closeMenu(); }}>{t('header.logout')}</button>
-                </div>
-              )}
-            </div>
+            <>
+              {/* Человечек + дропдаун */}
+              <div className="user-dropdown">
+                <button
+                  className="user-icon"
+                  onClick={toggleDropdown}
+                  aria-haspopup="true"
+                  aria-expanded={showDropdown}
+                >
+                  <img src={userIcon} alt="User menu" className="header__user-icon" />
+                </button>
+                {showDropdown && (
+                  <div className="user-dropdown__menu">
+                    <p className="user-dropdown__greeting">
+                      Привіт, {user?.name || 'Користувач'}
+                    </p>
+                    <Link to="/profile" className="user-dropdown__item" onClick={closeMenu}>
+                      Профіль
+                    </Link>
+                    <Link to="/transactions" className="user-dropdown__item" onClick={closeMenu}>
+                      Останні транзакції
+                    </Link>
+                    <button
+                      className="user-dropdown__logout"
+                      onClick={() => {
+                        onLogout();
+                        closeMenu();
+                      }}
+                    >
+                      Вийти
+                    </button>
+                  </div>
+                )}
+              </div>
+
+              {/* Сердечко */}
+              <Link to="/wishlist" className="header__wishlist" aria-label="Wishlist">❤</Link>
+            </>
           ) : (
             <button className="header__login" onClick={() => { onOpenAuth(); closeMenu(); }}>
-              {t('auth.login_register')}
+              Увійти / Реєстрація
             </button>
           )}
 
+          {/* Корзина */}
           <button
             className={`header__cart ${isHighlight ? 'highlight' : ''}`}
             onClick={toggleCart}
             aria-label="Cart"
           >
-            🛒
+            <img src={cartIcon} alt="Cart" className="header__cart-icon" />
             {totalQuantity > 0 && (
               <span className="header__cart-badge">{totalQuantity}</span>
             )}
           </button>
 
+          {/* Бургер */}
           <button
             className={`header__burger ${isMenuOpen ? 'open' : ''}`}
             aria-label="Toggle menu"
@@ -103,14 +153,18 @@ function Header({
         </div>
       </header>
 
+      {/* Мобильное меню */}
       <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu--open' : ''}`}>
         <nav className="mobile-menu__nav">
-          <Link to="/catalog" className="header__link" onClick={closeMenu}>{t('nav.catalog')}</Link>
-          <Link to="/about" className="header__link" onClick={closeMenu}>{t('nav.about')}</Link>
-          <Link to="/contact" className="header__link" onClick={closeMenu}>{t('nav.contact')}</Link>
+          <Link to="/catalog" className="header__link" onClick={closeMenu}>Каталог</Link>
+          <Link to="/about" className="header__link" onClick={closeMenu}>Про нас</Link>
+          <Link to="/contact" className="header__link" onClick={closeMenu}>Контакти</Link>
           {!isAuthenticated && (
-            <button className="mobile-menu__login" onClick={() => { onOpenAuth(); closeMenu(); }}>
-              {t('auth.login_register')}
+            <button
+              className="mobile-menu__login"
+              onClick={() => { onOpenAuth(); closeMenu(); }}
+            >
+              Увійти / Реєстрація
             </button>
           )}
         </nav>

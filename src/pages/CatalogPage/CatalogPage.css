@@ -1,0 +1,223 @@
+.catalog-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.catalog-hero {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: top center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -80px;
+
+
+}
+
+/* ⬇️ Добавляем градиент через псевдоэлемент */
+.catalog-bottom-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* ✅ вместо 1440px */
+    height: 439px;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(to top,
+            rgba(22, 44, 30, 0.95) 0%,
+            rgba(22, 44, 30, 0.55) 45%,
+            rgba(22, 44, 30, 0.5) 65%,
+            transparent 100%);
+}
+
+
+
+.catalog-title {
+    font-size: 340px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 80px;
+    text-align: center;
+    line-height: 1;
+    position: relative;
+    top: 175px;
+    z-index: 2;
+}
+
+.catalog-filters__wrapper {
+    border: 1px solid rgba(255, 255, 255, 0.66);
+    border-radius: 100px;
+    width: 1054px;
+    padding: 30px 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 4px 4px 0 rgba(0, 0, 0, 0.25),
+        0 4px 4px 0 rgba(0, 0, 0, 0.25);
+    background: linear-gradient(218deg,
+            rgba(168, 168, 168, 0.31) 0%,
+            rgba(132, 127, 127, 0.31) 43.27%,
+            rgba(95, 109, 99, 0.31) 85.58%);
+    margin: 0 auto;
+    position: relative;
+    top: 125px;
+    z-index: 2;
+}
+
+.catalog-filters {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+    max-width: 1000px;
+}
+
+
+
+.catalog-filters button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: 2px solid #fff;
+    background: transparent;
+    flex: 0 0 calc(25% - 20px);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.catalog-filters button:hover {
+    background: #fff;
+    color: #1a1a1a;
+}
+
+.catalog-filters .active {
+    background: #fff;
+    color: #1a1a1a;
+}
+
+.catalog-description {
+    max-width: 1054px;
+    margin: 126px auto 40px;
+    padding: 0 20px;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 145%;
+    color: #fff;
+
+}
+
+.pagination {
+    margin: 70px auto;
+    display: flex;
+    gap: 7px;
+}
+
+.pagination button {
+    border: 1px solid #ccc;
+    background: white;
+    padding: 8px 14px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* точки "..." в пагинации */
+.pagination .dots {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 42px;
+    height: 42px;
+    font-size: 18px;
+    color: #fff;
+    cursor: default;
+    user-select: none;
+}
+
+.pagination button.active {
+    background: #163c24;
+    color: #fff;
+    border-color: #163c24;
+}
+
+.pagination button:hover {
+    background: #285a38;
+    color: #fff;
+}
+
+/* ✅ адаптив */
+@media (max-width: 1024px) {
+    .catalog-description {
+        font-size: 18px;
+        margin: 40px auto 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .catalog-title {
+        font-size: 180px;
+        top: 100px;
+    }
+
+    .catalog-filters__wrapper {
+        width: 90%;
+        height: auto;
+        padding: 20px;
+        top: 60px;
+    }
+
+    .catalog-filters button {
+        padding: 0 18px;
+    }
+
+    .catalog-description {
+        font-size: 16px;
+        margin: 30px auto 20px;
+    }
+
+    .pagination {
+        gap: 5px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .pagination button,
+    .pagination .dots {
+        min-width: 34px;
+        height: 34px;
+        padding: 4px 8px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .catalog-title {
+        font-size: 90px;
+        top: 60px;
+    }
+
+    .catalog-description {
+        font-size: 17px;
+        margin: 20px auto;
+    }
+
+    .pagination {
+        gap: 4px;
+    }
+
+    .pagination button,
+    .pagination .dots {
+        min-width: 28px;
+        height: 28px;
+        padding: 3px 6px;
+        font-size: 12px;
+    }
+}

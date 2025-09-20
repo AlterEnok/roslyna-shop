@@ -3,6 +3,8 @@
     padding: 2rem 0;
     display: flex;
     justify-content: center;
+    position: relative;
+    top: -33px;
 }
 
 .ticker-container {

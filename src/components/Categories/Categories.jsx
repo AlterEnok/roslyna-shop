@@ -1,26 +1,25 @@
 import './Categories.css';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
 
-import gelImg from '../../assets/gel.jpg';
-import oilImg from '../../assets/oil.jpg';
-import herbsImg from '../../assets/herbs.jpg';
+import creamImg from '../../assets/gel.jpg';
+import intimateGelImg from '../../assets/oil.jpg';
+import faceCareImg from '../../assets/herbs.jpg';
 import capsulesImg from '../../assets/capsules.jpg';
 
 function Categories() {
-    const { t } = useTranslation();
     const sectionRef = useRef(null);
     const [visibleIndexes, setVisibleIndexes] = useState([]);
     const [textVisible, setTextVisible] = useState(false);
     const navigate = useNavigate();
 
     const categories = [
-        { title: t('categories.gels'), image: gelImg },
-        { title: t('categories.tinctures'), image: oilImg },
-        { title: t('categories.herbs'), image: herbsImg },
-        { title: t('categories.capsules'), image: capsulesImg },
+        { title: 'Креми та бальзами', image: creamImg },
+        { title: 'Інтимна гігієна', image: intimateGelImg },
+        { title: 'Догляд за обличчям', image: faceCareImg },
+        { title: 'Капсули та БАДи', image: capsulesImg },
     ];
+
 
     useEffect(() => {
         const cards = document.querySelectorAll('.category-card');
@@ -57,7 +56,7 @@ function Categories() {
 
     return (
         <section className="categories" ref={sectionRef}>
-            <h2 className="categories__title">{t('categories.title')}</h2>
+            <h2 className="categories__title">Категорії товарів</h2>
             <div className="categories__grid">
                 {categories.map((cat, index) => (
                     <div
@@ -73,13 +72,23 @@ function Categories() {
             </div>
 
             <div className={`categories__text ${textVisible ? 'text-visible' : ''}`} style={{ transitionDelay: '0.3s' }}>
-                <h4>{t('categories.text_block.small_title')}</h4>
-                <p>{t('categories.text_block.paragraph_1')}</p>
-                <p>{t('categories.text_block.paragraph_2')}</p>
+                <h4>Ми сьогодні</h4>
+                <p>
+                    Лідерство - це сила, здатна зібрати всі частини в єдине ціле.
+                    Тільки справжньому лідерові під силу побудувати сильний бізнес.
+                    » (Р. Кійосаки)
+                </p>
+                <p>
+                    Український бренд «Рослина Карпат» - потужний виробник екологічно чистої,
+                    натуральної продукції із природної сировини для здоров’я та краси з багаторічним досвідом.
+                    Виробництво давно має замкнутий цикл від збору сировини у високогірних диких Карпатах,
+                    підготовки збору лікарських рослин - до упаковки препаратів.
+                </p>
                 <button className="about-button" onClick={() => navigate('/about')}>
-                    {t('categories.text_block.button')}
+                    Детальніше
                 </button>
             </div>
+
         </section>
     );
 }

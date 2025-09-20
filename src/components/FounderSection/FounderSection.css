@@ -1,0 +1,386 @@
+.founder {
+    background: #052f1c;
+    padding: 6rem 2rem;
+    display: flex;
+    justify-content: center;
+}
+
+.founder__container {
+    display: flex;
+    max-width: 1280px;
+    width: 100%;
+    gap: 88px;
+    align-items: center;
+}
+
+.founder__image {
+    position: relative;
+    top: -7dvh;
+    padding: 12px;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+    background: rgba(229, 225, 221, 0.3);
+    border: 0px solid #e5e7eb;
+}
+
+.founder__photo {
+    width: 100%;
+    max-width: 420px;
+    border-radius: 16px;
+    object-fit: cover;
+    display: block;
+}
+
+/* кружки */
+.founder__circle {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    background: rgba(156, 175, 136, 0.1);
+    border: 1px solid rgba(229, 231, 235, 0.23);
+    border-radius: 9999px;
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+
+}
+
+.founder__circle img {
+    width: 55%;
+    height: auto;
+}
+
+.founder__circle--top {
+    top: -20px;
+    left: -20px;
+}
+
+.founder__circle--bottom {
+    bottom: -20px;
+    right: -20px;
+}
+
+/* опыт */
+.founder__experience {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    background: white;
+    color: #052f1c;
+    font-size: 0.9rem;
+    font-weight: 500;
+    padding: 0.4rem 0.8rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.founder__experience span {
+    display: flex;
+    align-items: center;
+}
+
+.founder__experience span::before {
+    content: "";
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #4caf50;
+    border-radius: 50%;
+    margin-right: 6px;
+}
+
+.founder__content {
+    flex: 1.2;
+    color: white;
+}
+
+.founder__role {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    border: 0px solid #e5e7eb;
+    border-radius: 9999px;
+    background: rgba(156, 175, 136, 0.1);
+    letter-spacing: 0.05em;
+    color: #9caf88;
+}
+
+.founder__firstname {
+    display: block;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 100%;
+}
+
+.founder__lastname {
+    display: block;
+    color: #87c38f;
+    font-weight: 300;
+    font-size: 48px;
+    line-height: 100%;
+    margin-top: 0.2rem;
+    position: relative;
+    padding-bottom: 0.6rem;
+    /* место под полоску */
+}
+
+.founder__lastname::after {
+    content: "";
+    display: block;
+    width: 114px;
+    /* ширина как ты указал */
+    height: 4px;
+    /* толщина */
+    background: #9caf88;
+    /* цвет полоски */
+    border-radius: 2px;
+    margin-top: 18px;
+}
+
+.founder__text {
+
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 125%;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.second-text {
+    margin-top: 0;
+
+}
+
+.founder__text:not(:last-child) {
+    margin-bottom: 4rem;
+
+}
+
+.founder__stats {
+    display: flex;
+    gap: 3rem;
+    margin: 2rem 0;
+}
+
+.founder__stats div {
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #fff;
+}
+
+.founder__button {
+    position: relative;
+    display: inline-block;
+    font-size: clamp(1rem, 1.1vw, 1.2rem);
+    font-weight: 500;
+    color: white;
+    padding: 0.75rem 1.6rem;
+    border: 2px solid rgba(255, 255, 255, 0.66);
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(90, 130, 100, 0.4), rgba(50, 60, 60, 0.2));
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+    backdrop-filter: blur(6px);
+    top: 5dvh;
+}
+
+.founder__button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+    z-index: 0;
+}
+
+.founder__button:hover::before {
+    left: 100%;
+}
+
+.founder__button:hover {
+    color: white;
+    background: linear-gradient(135deg, rgba(120, 180, 120, 0.6), rgba(80, 100, 100, 0.3));
+}
+
+/* АНИМКИ */
+.founder__image {
+    opacity: 0;
+    transform: scale(0.95);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.founder__image.show {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.founder__circle {
+    opacity: 0;
+    transform: scale(0.5);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Появление кругов с задержкой */
+.founder__image.show .founder__circle--top {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.6s;
+}
+
+.founder__image.show .founder__circle--bottom {
+    opacity: 1;
+    transform: scale(1);
+    transition-delay: 0.9s;
+}
+
+
+.founder__content>* {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+/* при появлении секции */
+.founder__content.show>* {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* задержки для каждого элемента */
+.founder__role {
+    transition-delay: 0.3s;
+}
+
+.founder__firstname,
+.founder__lastname {
+    transition-delay: 0.6s;
+}
+
+.founder__text:first-of-type {
+    transition-delay: 0.9s;
+}
+
+.founder__text.second-text {
+    transition-delay: 1.2s;
+}
+
+.founder__button {
+    transition-delay: 1.5s;
+}
+
+/* АНИМКИ */
+
+/* =============== АДАПТИВ =============== */
+
+/* Планшеты и ниже */
+@media (max-width: 1024px) {
+    .founder__container {
+        gap: 40px;
+    }
+
+    .founder__firstname,
+    .founder__lastname {
+        font-size: 36px;
+    }
+
+    .founder__text {
+        font-size: 20px;
+    }
+}
+
+/* Мобилки */
+@media (max-width: 768px) {
+    .founder__container {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .founder__image {
+        top: 0;
+        max-width: 320px;
+        margin: 0 auto;
+    }
+
+    .founder__photo {
+        max-width: 100%;
+    }
+
+    .founder__content {
+        flex: unset;
+        width: 100%;
+    }
+
+    .founder__firstname,
+    .founder__lastname {
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .founder__lastname::after {
+        margin: 12px auto 0;
+        /* полоска по центру */
+    }
+
+    .founder__text {
+        font-size: 18px;
+        line-height: 1.5;
+    }
+
+    .founder__text:not(:last-child) {
+        margin-bottom: 3rem;
+
+    }
+
+    .founder__stats {
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .founder__button {
+        top: 0;
+    }
+}
+
+/* Очень маленькие экраны (iPhone SE и т.п.) */
+@media (max-width: 480px) {
+    .founder {
+        padding: 3rem 1rem;
+    }
+
+    .founder__container {
+        gap: 1.5rem;
+    }
+
+    .founder__firstname,
+    .founder__lastname {
+        font-size: 26px;
+    }
+
+    .founder__text {
+        font-size: 16px;
+    }
+
+    .founder__stats {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .founder__button {
+        width: 100%;
+        max-width: 280px;
+    }
+}

@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react';
+// src/App.jsx
+import React, { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Header from './components/Header/Header';
 import Hero from './components/Hero/Hero';
 import ContactTicker from './components/ContactTicker/ContactTicker';
@@ -8,96 +10,31 @@ import Categories from './components/Categories/Categories';
 import ProductPage from './components/ProductPage/ProductPage';
 import ProductList from './components/ProductList/ProductList';
 import StatsSection from './components/StatsSection/StatsSection';
+import FounderSection from './components/FounderSection/FounderSection';
 import Reviews from './components/Reviews/Reviews';
 import Location from './components/Location/Location';
 import Footer from './components/Footer/Footer';
 import AuthModal from './components/AuthModal/AuthModal';
-import LanguagePopup from './components/LanguagePopup/LanguagePopup';
-import './i18n';
-
 import CartOverlay from './components/CartOverlay/CartOverlay';
 import CartSidebar from './components/CartSidebar/CartSidebar';
 
-function App() {
-  const [cartItems, setCartItems] = useState([]);
+import CatalogPage from './pages/CatalogPage/CatalogPage';
+
+import { AuthProvider } from './context/AuthContext.jsx';
+import { CartProvider } from './context/CartContext.jsx';
+import { useAuth } from './context/useAuth.jsx';
+import { useCart } from './context/useCart.jsx';
+
+function AppContent() {
+  const { user, isAuthModalOpen, setIsAuthModalOpen, handleLogin, handleLogout } = useAuth();
+  const { cartItems, addToCart, removeFromCart, incrementItem, decrementItem, isCartOpen, toggleCart, closeCart } = useCart();
+
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
-
-  const [user, setUser] = useState(null);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
-
-  useEffect(() => {
-    const access = localStorage.getItem('access');
-    if (access) {
-      fetch('http://localhost:8000/api/user/me/', {
-        headers: { Authorization: `Bearer ${access}` },
-      })
-        .then((res) => {
-          if (!res.ok) throw new Error('Unauthorized');
-          return res.json();
-        })
-        .then((data) => setUser(data))
-        .catch(() => {
-          localStorage.removeItem('access');
-          localStorage.removeItem('refresh');
-        });
-    }
-  }, []);
-
-  const handleLogin = (userData) => {
-    setUser(userData);
-    setIsAuthModalOpen(false);
-  };
-
-  const handleLogout = () => {
-    localStorage.removeItem('access');
-    localStorage.removeItem('refresh');
-    setUser(null);
-  };
-
-  const addToCart = (item) => {
-    setCartItems((prev) => {
-      const existing = prev.find((i) => i.id === item.id);
-      if (existing) {
-        return prev.map((i) =>
-          i.id === item.id ? { ...i, quantity: i.quantity + 1 } : i
-        );
-      }
-      return [...prev, { ...item, quantity: 1 }];
-    });
-  };
-
-  const removeFromCart = (id) => {
-    setCartItems((prev) => prev.filter((item) => item.id !== id));
-  };
-
-  const incrementItem = (id) => {
-    setCartItems((prev) =>
-      prev.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-      )
-    );
-  };
-
-  const decrementItem = (id) => {
-    setCartItems((prev) =>
-      prev
-        .map((item) =>
-          item.id === id ? { ...item, quantity: item.quantity - 1 } : item
-        )
-        .filter((item) => item.quantity > 0)
-    );
-  };
-
-  const toggleMenu = () => setIsMenuOpen((prev) => !prev);
+  const toggleMenu = () => setIsMenuOpen(prev => !prev);
   const closeMenu = () => setIsMenuOpen(false);
-
-  const toggleCart = () => setIsCartOpen((prev) => !prev);
-  const closeCart = () => setIsCartOpen(false);
 
   return (
     <>
-      <LanguagePopup />
       <Header
         cartItems={cartItems}
         isAuthenticated={!!user}
@@ -119,24 +56,25 @@ function App() {
         onIncrement={incrementItem}
         onDecrement={decrementItem}
       />
-
+      <ScrollToTop />
       <Routes>
-        <Route
-          path="/"
-          element={
-            <>
-              <Hero />
-              <ContactTicker />
-              <Categories />
-              <ProductList addToCart={addToCart} isPreview={true} />
-              <StatsSection />
-              <Reviews />
-              <Location />
-              <Footer />
-            </>
-          }
-        />
-        <Route path="/catalog" element={<ProductList addToCart={addToCart} />} />
+        <Route path="/" element={
+          <>
+            <Hero />
+            <ContactTicker />
+            <FounderSection />
+            <Categories />
+            <ProductList addToCart={addToCart} isPreview />
+            <StatsSection />
+            <Reviews />
+            <Location />
+            <Footer />
+          </>
+        } />
+
+        {/* вместо ProductList теперь подключаем отдельную страницу */}
+        <Route path="/catalog" element={<CatalogPage addToCart={addToCart} />} />
+
         <Route path="/product/:id" element={<ProductPage addToCart={addToCart} />} />
         <Route path="/about" element={<div>About Us</div>} />
         <Route path="/reviews" element={<div>Reviews</div>} />
@@ -145,11 +83,17 @@ function App() {
         <Route path="/transactions" element={<div>Transactions</div>} />
       </Routes>
 
-      {isAuthModalOpen && (
-        <AuthModal onClose={() => setIsAuthModalOpen(false)} onLogin={handleLogin} />
-      )}
+      {isAuthModalOpen && <AuthModal onClose={() => setIsAuthModalOpen(false)} onLogin={handleLogin} />}
     </>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <AuthProvider>
+      <CartProvider>
+        <AppContent />
+      </CartProvider>
+    </AuthProvider>
+  );
+}

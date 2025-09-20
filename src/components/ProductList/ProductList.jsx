@@ -1,81 +1,73 @@
-import React, { useEffect, useState } from 'react';
-import ProductCard from '../ProductCard/ProductCard';
+// ProductList.jsx
+import React from 'react';
 import { Link } from 'react-router-dom';
-import { useTranslation } from 'react-i18next';
+import ProductCard from '../ProductCard/ProductCard';
 import './ProductList.css';
 
-function ProductList({ addToCart, isPreview = false }) {
-    const { t } = useTranslation();
-    const [products, setProducts] = useState([]);
+import product1Img from '../../assets/product1.png';
+import product2Img from '../../assets/product2.png';
+import product3Img from '../../assets/product3.png';
+import product4Img from '../../assets/product4.png';
 
-    useEffect(() => {
-        const dummyProducts = [
-            {
-                id: 1,
-                title: t('products.pills'),
-                price: 499,
-                image: 'https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=500&q=80',
-            },
-            {
-                id: 2,
-                title: t('products.supplements'),
-                price: 129,
-                image: 'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80',
-            },
-            {
-                id: 3,
-                title: t('products.herbalDrops'),
-                price: 49,
-                image: 'https://images.unsplash.com/photo-1582719478177-2fd1aebd6f2b?auto=format&fit=crop&w=500&q=80',
-            },
-            {
-                id: 4,
-                title: t('products.capsulePack'),
-                price: 89,
-                image: 'https://images.unsplash.com/photo-1588776814546-ec7e45ba1ab2?auto=format&fit=crop&w=500&q=80',
-            },
-            {
-                id: 5,
-                title: t('products.essentialOil'),
-                price: 99,
-                image: 'https://images.unsplash.com/photo-1589987607627-2ba9c1d5fdc5?auto=format&fit=crop&w=500&q=80',
-            },
-            {
-                id: 6,
-                title: t('products.organicTea'),
-                price: 35,
-                image: 'https://images.unsplash.com/photo-1612197574088-6a9a45e1624a?auto=format&fit=crop&w=500&q=80',
-            },
-        ];
+function ProductList({ addToCart, isLoggedIn, noTitle, products }) {
+    // дефолтные товары для главной
+    const defaultProducts = [
+        {
+            id: 1,
+            title: "Рослина карпат: 6 в одному",
+            subtitle: "Евкаліпт,чорний горіх,пижма,розторопша",
+            price: 2490,
+            image: product1Img,
+        },
+        {
+            id: 2,
+            title: "L-Карнітин PRO",
+            subtitle: "Евкаліпт,чорний горіх,пижма,розторопша",
+            price: 2690,
+            image: product2Img,
+        },
+        {
+            id: 3,
+            title: "Журавлина СИРОП",
+            subtitle: "Підтримка імунітету та здоров’я",
+            price: 2590,
+            image: product3Img,
+        },
+        {
+            id: 4,
+            title: "Антивірин Муршине дерево",
+            subtitle: "Підтримка імунітету та здоров’я",
+            price: 2590,
+            image: product4Img,
+        }
+    ];
 
-        setProducts(dummyProducts);
-    }, [t]); // пересоздаёт список при смене языка
-
-    const productsToShow = isPreview ? products.slice(0, 6) : products;
+    // если передали products — используем их, иначе дефолтные
+    const renderProducts = products && products.length > 0 ? products : defaultProducts;
 
     return (
         <section className="product-list">
-            {isPreview && (
+            {!noTitle && (
                 <h2 className="product-list__title">
-                    <span>{t('productList.amazing')}</span><br />
-                    <span>{t('productList.popularProducts')}</span>
+                    Неймовірно <span>Популярні товари</span>
                 </h2>
             )}
 
             <div className="product-list__grid">
-                {productsToShow.map((product) => (
+                {renderProducts.map((product) => (
                     <ProductCard
                         key={product.id}
                         product={product}
-                        addToCart={addToCart || (() => { })}
+                        addToCart={addToCart}
+                        isLoggedIn={isLoggedIn}
                     />
                 ))}
             </div>
 
-            {isPreview && (
-                <div className="product-list__more">
-                    <Link to="/catalog" className="product-list__more-button">
-                        {t('productList.seeAll')}
+            {!noTitle && (
+                <div className="product-list__button-wrapper">
+                    <Link to="/catalog" className="product-list__button">
+                        Побачити всі
                     </Link>
                 </div>
             )}
