@@ -25,7 +25,7 @@ function ContactPage() {
             <div className="contact-info">
                 <div className="contact-card big">
                     <span className="contact-label">Пошта</span>
-                    <p className="contact-value">
+                    <p className="contact-value email">
                         <a href="mailto:tanusya09@gmail.com">tanusya09@gmail.com</a>
                     </p>
                 </div>
@@ -33,7 +33,7 @@ function ContactPage() {
                 <div className="contact-row">
                     <div className="contact-card">
                         <span className="contact-label">Телефон</span>
-                        <p className="contact-value">
+                        <p className="contact-value phone">
                             <a href="tel:+380971345797">(+380) 097 134 5797</a>
                         </p>
                     </div>

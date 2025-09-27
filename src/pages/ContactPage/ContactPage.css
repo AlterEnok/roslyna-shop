@@ -83,12 +83,12 @@
     height: 175px;
 }
 
-/* телефон и адрес */
+
 .contact-card.small {
     width: 487px;
 }
 
-/* заголовок (почта / телефон / адрес) */
+
 .contact-label {
     position: absolute;
     top: -14px;
@@ -104,23 +104,26 @@
     white-space: nowrap;
 }
 
-/* значения */
 .contact-value {
+    color: #fff;
     font-size: 1.6rem;
     letter-spacing: 2px;
     margin: 0;
 }
 
-.contact-value a {
-    color: #fff;
-    /* основной цвет текста */
-    text-decoration: none;
-    transition: 0.3s;
+
+.contact-value.email {
+    font-size: 5rem;
+    font-weight: 600;
+}
+
+
+.contact-value.phone {
+    font-size: 2rem;
 }
 
 .contact-value a:hover {
     color: #25432b;
-    /* твой фирменный акцент (можно поменять) */
 }
 
 /* 🔹 Соцсети */
