@@ -1,129 +1,227 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import './ProductPage.css';
+// ProductPage.jsx
+import React, { useState, useRef, useEffect } from "react";
+import "./ProductPage.css";
+import Footer from '../../components/Footer/Footer';
+import ProductList from "../ProductList/ProductList";
+import antivrin1 from "../../assets/antivrin1.png";
+import antivrin2 from "../../assets/antivrin2.png";
+import product3Img from "../../assets/product3.png";
+import product4Img from "../../assets/product4.png";
+import star from "../../assets/star.png";
 
 function ProductPage({ addToCart }) {
-    const { id } = useParams();
-    const [product, setProduct] = useState(null);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const product = {
+        id: 1,
+        title: "Антивирін",
+        subtitle: "Мурашине дерево",
+        description:
+            "Це природний противірусний засіб, який виробляється компанією “Рослина Карпат”. Цей препарат має широкий спектр дії проти різних вірусів...",
+        price: 1290,
+        images: [antivrin1, antivrin2],
+    };
+
+    const [quantity, setQuantity] = useState(1);
+    const [selectedImage, setSelectedImage] = useState(product.images[0]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    // --- Відгуки ---
+    const [reviews, setReviews] = useState([
+        { id: 1, user: "Валерій Альбертович", text: "Користуюсь вже вдруге — волосся стало живим...", date: "20.09.2025" },
+        { id: 2, user: "Оксана", text: "Замовила вперше, приємно здивована швидкою доставкою...", date: "22.09.2025" },
+    ]);
+
+    const [newReview, setNewReview] = useState("");
+    const [lastReviewTime, setLastReviewTime] = useState(0);
+    const [error, setError] = useState("");
+    const listRef = useRef(null);
+
+    const handleAddReview = (e) => {
+        e.preventDefault();
+        setError("");
+
+        const now = Date.now();
+
+        if (newReview.trim().length < 5) {
+            setError("Відгук занадто короткий (мінімум 5 символів).");
+            return;
+        }
+        if (newReview.trim().length > 500) {
+            setError("Відгук занадто довгий (максимум 500 символів).");
+            return;
+        }
+
+        if (now - lastReviewTime < 30000) {
+            setError("Можна залишати відгуки не частіше ніж раз на 30 секунд.");
+            return;
+        }
+
+        const newEntry = {
+            id: Date.now(),
+            user: "Ваше ім’я (із акаунта)",
+            text: newReview,
+            date: new Date().toLocaleDateString(),
+        };
+
+        setReviews([...reviews, newEntry]);
+        setNewReview("");
+        setLastReviewTime(now);
+    };
 
     useEffect(() => {
-        setLoading(true);
-        setError(null);
+        if (listRef.current) {
+            listRef.current.scrollTop = listRef.current.scrollHeight;
+        }
+    }, [reviews]);
 
-        // Всё в этом компоненте — как ты просил
-        const dummyProducts = [
-            {
-                id: 1,
-                title: 'Luxury Watch',
-                price: 499,
-                description: 'A very luxurious watch.',
-                images: [
-                    'https://images.unsplash.com/photo-1519744792095-2f2205e87b6f?auto=format&fit=crop&w=500&q=80',
-                    'https://images.unsplash.com/photo-1503602642458-232111445657?auto=format&fit=crop&w=500&q=80',
-                ],
-            },
-            {
-                id: 2,
-                title: 'Classic Leather Wallet',
-                price: 129,
-                description: 'Elegant and functional wallet for everyday use.',
-                images: [
-                    'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80',
-                    'https://images.unsplash.com/photo-1589987607627-2ba9c1d5fdc5?auto=format&fit=crop&w=500&q=80',
-                ],
-            },
-            {
-                id: 3,
-                title: 'Herbal Drops',
-                price: 49,
-                description: 'Natural herbal drops for wellness.',
-                images: [
-                    'https://images.unsplash.com/photo-1582719478177-2fd1aebd6f2b?auto=format&fit=crop&w=500&q=80',
-                ],
-            },
-            {
-                id: 4,
-                title: 'Capsule Pack',
-                price: 89,
-                description: 'Capsules with natural ingredients for daily intake.',
-                images: [
-                    'https://images.unsplash.com/photo-1588776814546-ec7e45ba1ab2?auto=format&fit=crop&w=500&q=80',
-                ],
-            },
-            {
-                id: 5,
-                title: 'Essential Oil',
-                price: 99,
-                description: 'Aromatic oil for relaxation and therapy.',
-                images: [
-                    'https://images.unsplash.com/photo-1589987607627-2ba9c1d5fdc5?auto=format&fit=crop&w=500&q=80',
-                ],
-            },
-            {
-                id: 6,
-                title: 'Organic Tea',
-                price: 35,
-                description: 'Refreshing organic tea from mountain herbs.',
-                images: [
-                    'https://images.unsplash.com/photo-1612197574088-6a9a45e1624a?auto=format&fit=crop&w=500&q=80',
-                ],
-            },
-        ];
-
-        const found = dummyProducts.find((p) => p.id === Number(id));
-
-        const timer = setTimeout(() => {
-            if (found) {
-                setProduct(found);
-            } else {
-                setError('Product not found');
-            }
-            setLoading(false);
-        }, 300);
-
-        return () => clearTimeout(timer);
-    }, [id]);
-
-    if (loading) return <div className="product-page__loading">Загрузка...</div>;
-    if (error) return <div className="product-page__error">Ошибка: {error}</div>;
-    if (!product) return <div className="product-page__empty">Продукт не найден</div>;
+    const handleAddToCart = () => {
+        addToCart({
+            id: product.id,
+            title: product.title,
+            price: product.price,
+            image: product.images[0],
+            quantity,
+        });
+    };
 
     return (
-        <section className="product-page">
-            <div className="product-page__container">
-                <div className="product-page__images">
-                    {product.images.map((img, idx) => (
+        <>
+            <section className="product-page">
+                <div className="product-page__container">
+                    {/* Галерея */}
+                    <div className="product-page__gallery">
                         <img
-                            key={idx}
-                            src={img}
-                            alt={`${product.title} ${idx + 1}`}
-                            className="product-page__image"
+                            src={selectedImage}
+                            alt={product.title}
+                            className="product-page__main-image"
+                            onClick={() => setIsModalOpen(true)}
                         />
-                    ))}
+                        <div className="product-page__thumbnails">
+                            {product.images.map((img, idx) => (
+                                <img
+                                    key={idx}
+                                    src={img}
+                                    alt={`${product.title} ${idx + 1}`}
+                                    className={`product-page__thumbnail ${selectedImage === img ? "active" : ""}`}
+                                    onClick={() => setSelectedImage(img)}
+                                />
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Деталі */}
+                    <div className="product-page__details">
+                        <h1 className="product-page__title">{product.title}</h1>
+                        <h3 className="product-page__subtitle">{product.subtitle}</h3>
+                        <p className="product-page__description">{product.description}</p>
+                        <p className="product-page__price">{product.price} грн</p>
+
+                        <div className="product-page__quantity">
+                            <span>ШТ</span>
+                            <div className="product-page__qty-box">
+                                <button
+                                    onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                                    className="product-page__qty-btn"
+                                >
+                                    –
+                                </button>
+                                <span className="product-page__qty-value">{quantity}</span>
+                                <button
+                                    onClick={() => setQuantity(quantity + 1)}
+                                    className="product-page__qty-btn"
+                                >
+                                    +
+                                </button>
+                            </div>
+                        </div>
+
+                        <button className="product-page__button" onClick={handleAddToCart}>
+                            Додати до кошика
+                        </button>
+                    </div>
                 </div>
-                <div className="product-page__details">
-                    <h1 className="product-page__title">{product.title}</h1>
-                    <p className="product-page__price">${product.price}</p>
-                    <p className="product-page__description">{product.description}</p>
-                    <button
-                        className="product-page__button"
-                        onClick={() =>
-                            addToCart({
-                                id: product.id,
-                                title: product.title,
-                                price: product.price,
-                                image: product.images[0],
-                                quantity: 1,
-                            })
-                        }
-                    >
-                        Add to Cart
-                    </button>
+
+                {/* Модалка */}
+                {isModalOpen && (
+                    <div className="product-page__modal" onClick={() => setIsModalOpen(false)}>
+                        <img src={selectedImage} alt="fullscreen" className="product-page__modal-image" />
+                    </div>
+                )}
+
+                {/* --- Відгуки --- */}
+                <div className="reviews">
+                    <div className="reviews__marquee">
+                        <div className="reviews__marquee__track">
+                            Відгуки <img src={star} alt="*" /> Відгуки <img src={star} alt="*" /> Відгуки
+                            <img src={star} alt="*" /> Відгуки <img src={star} alt="*" /> Відгуки
+                            <img src={star} alt="*" /> Відгуки <img src={star} alt="*" />
+                        </div>
+                    </div>
+
+                    <form onSubmit={handleAddReview} className="reviews__form">
+                        <textarea
+                            value={newReview}
+                            onChange={(e) => setNewReview(e.target.value)}
+                            placeholder="Введіть відгук який побачать всі"
+                            className="reviews__textarea"
+                        />
+                        <button type="submit">➤</button>
+                    </form>
+                    {error && <p className="reviews__error">{error}</p>}
+
+                    <div className="reviews__list" ref={listRef}>
+                        {reviews.map((review) => (
+                            <div key={review.id} className="reviews__card">
+                                <strong>{review.user}</strong>
+                                <p>{review.text}</p>
+                                <span className="reviews__date">{review.date}</span>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-            </div>
-        </section>
+
+                <div className="recommendations">
+                    <h2 className="recommendations__title">Перегляньте наші рекомендації</h2>
+                    <ProductList
+                        addToCart={addToCart}
+                        isLoggedIn={true}
+                        noTitle={true}
+                        products={[
+                            {
+                                id: 101,
+                                title: "Антивирін Форте",
+                                subtitle: "Посилена формула",
+                                price: 1490,
+                                image: antivrin1,
+                            },
+                            {
+                                id: 102,
+                                title: "ІмуноТаб",
+                                subtitle: "Підтримка імунітету",
+                                price: 1790,
+                                image: antivrin1,
+                            },
+                            {
+                                id: 103,
+                                title: "Фітотаб Обліпиха",
+                                subtitle: "Вітамінний комплекс",
+                                price: 1990,
+                                image: product3Img,
+                            },
+                            {
+                                id: 104,
+                                title: "Карпатський бальзам",
+                                subtitle: "Відновлення та енергія",
+                                price: 1890,
+                                image: product4Img,
+                            },
+                        ]}
+                    />
+                </div>
+            </section>
+
+            {/* 🔥 Футер на всю ширину */}
+            <Footer />
+        </>
     );
 }
 

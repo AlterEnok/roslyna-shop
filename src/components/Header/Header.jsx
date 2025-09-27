@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import logo from '../../assets/logo.png';
 import cartIcon from '../../assets/cart.png';
 import userIcon from '../../assets/user.png';
+import WishlistContext from '../../context/WishlistContext';
 
 function Header({
   toggleCart,
@@ -16,26 +17,35 @@ function Header({
   toggleMenu,
   closeMenu,
 }) {
-  const [isHighlight, setIsHighlight] = useState(false);
+  const [cartHighlight, setCartHighlight] = useState(false);
+  const [wishlistHighlight, setWishlistHighlight] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
 
-  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const { wishlist } = useContext(WishlistContext);
 
-  // Подсветка корзины при добавлении товара
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+  const wishlistCount = wishlist.length;
+
+  // Подсветка бейджа корзины
   useEffect(() => {
     if (totalQuantity > 0) {
-      setIsHighlight(true);
-      const timer = setTimeout(() => setIsHighlight(false), 1000);
-      return () => clearTimeout(timer);
+      setCartHighlight(true);
     }
   }, [totalQuantity]);
 
-  // Открытие/закрытие дропа по клику
-  const toggleDropdown = () => setShowDropdown((prev) => !prev);
-
-  // Автоматическое закрытие при клике вне блока
+  // Подсветка бейджа избранного
   useEffect(() => {
-    const handleClickOutside = (e) => {
+    if (wishlistCount > 0) {
+      setWishlistHighlight(true);
+      const timer = setTimeout(() => setWishlistHighlight(false), 800);
+      return () => clearTimeout(timer);
+    }
+  }, [wishlistCount]);
+
+  const toggleDropdown = () => setShowDropdown(prev => !prev);
+
+  useEffect(() => {
+    const handleClickOutside = e => {
       if (!e.target.closest('.user-dropdown')) {
         setShowDropdown(false);
       }
@@ -44,24 +54,16 @@ function Header({
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  // Закрывать дропдаун сразу после логина/регистрации
   useEffect(() => {
-    if (isAuthenticated) {
-      setShowDropdown(false);
-    }
+    if (isAuthenticated) setShowDropdown(false);
   }, [isAuthenticated]);
 
-  // Скролл-эффект для шапки
   useEffect(() => {
     const header = document.querySelector('.header');
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -84,7 +86,6 @@ function Header({
         <div className="header__actions">
           {isAuthenticated ? (
             <>
-              {/* Человечек + дропдаун */}
               <div className="user-dropdown">
                 <button
                   className="user-icon"
@@ -96,21 +97,12 @@ function Header({
                 </button>
                 {showDropdown && (
                   <div className="user-dropdown__menu">
-                    <p className="user-dropdown__greeting">
-                      Привіт, {user?.name || 'Користувач'}
-                    </p>
-                    <Link to="/profile" className="user-dropdown__item" onClick={closeMenu}>
-                      Профіль
-                    </Link>
-                    <Link to="/transactions" className="user-dropdown__item" onClick={closeMenu}>
-                      Останні транзакції
-                    </Link>
+                    <p className="user-dropdown__greeting">Привіт, {user?.name || 'Користувач'}</p>
+                    <Link to="/profile" className="user-dropdown__item" onClick={closeMenu}>Профіль</Link>
+                    <Link to="/transactions" className="user-dropdown__item" onClick={closeMenu}>Останні транзакції</Link>
                     <button
                       className="user-dropdown__logout"
-                      onClick={() => {
-                        onLogout();
-                        closeMenu();
-                      }}
+                      onClick={() => { onLogout(); closeMenu(); }}
                     >
                       Вийти
                     </button>
@@ -118,8 +110,19 @@ function Header({
                 )}
               </div>
 
-              {/* Сердечко */}
-              <Link to="/wishlist" className="header__wishlist" aria-label="Wishlist">❤</Link>
+              {/* Wishlist */}
+              <Link
+                to="/wishlist"
+                className={`header__wishlist ${wishlistHighlight ? 'highlight' : ''}`}
+                aria-label="Wishlist"
+              >
+                ❤
+                {wishlistCount > 0 && (
+                  <span className={`header__wishlist-badge ${wishlistHighlight ? 'highlight' : ''}`}>
+                    {wishlistCount}
+                  </span>
+                )}
+              </Link>
             </>
           ) : (
             <button className="header__login" onClick={() => { onOpenAuth(); closeMenu(); }}>
@@ -127,19 +130,21 @@ function Header({
             </button>
           )}
 
-          {/* Корзина */}
-          <button
-            className={`header__cart ${isHighlight ? 'highlight' : ''}`}
-            onClick={toggleCart}
-            aria-label="Cart"
-          >
+          {/* Cart */}
+          <button className="header__cart" onClick={toggleCart} aria-label="Cart">
             <img src={cartIcon} alt="Cart" className="header__cart-icon" />
             {totalQuantity > 0 && (
-              <span className="header__cart-badge">{totalQuantity}</span>
+              <span
+                className={`header__cart-badge ${cartHighlight ? 'highlight' : ''}`}
+                onAnimationEnd={() => setCartHighlight(false)}
+              >
+                {totalQuantity}
+              </span>
             )}
+
           </button>
 
-          {/* Бургер */}
+          {/* Burger */}
           <button
             className={`header__burger ${isMenuOpen ? 'open' : ''}`}
             aria-label="Toggle menu"
@@ -153,17 +158,13 @@ function Header({
         </div>
       </header>
 
-      {/* Мобильное меню */}
       <div className={`mobile-menu ${isMenuOpen ? 'mobile-menu--open' : ''}`}>
         <nav className="mobile-menu__nav">
           <Link to="/catalog" className="header__link" onClick={closeMenu}>Каталог</Link>
           <Link to="/about" className="header__link" onClick={closeMenu}>Про нас</Link>
           <Link to="/contact" className="header__link" onClick={closeMenu}>Контакти</Link>
           {!isAuthenticated && (
-            <button
-              className="mobile-menu__login"
-              onClick={() => { onOpenAuth(); closeMenu(); }}
-            >
+            <button className="mobile-menu__login" onClick={() => { onOpenAuth(); closeMenu(); }}>
               Увійти / Реєстрація
             </button>
           )}

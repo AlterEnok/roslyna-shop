@@ -284,10 +284,8 @@
     .hero__footer-links {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        /* 2 слева, 2 справа */
         gap: 1.5rem 2rem;
-        /* строки и колонки */
-        margin-top: 8rem;
+        margin-top: 11rem;
     }
 
     .hero__footer-link {

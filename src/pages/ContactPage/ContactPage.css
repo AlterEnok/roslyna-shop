@@ -1,0 +1,392 @@
+.contact-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+.contact-hero {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: top center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -80px;
+}
+
+.contact-bottom-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 439px;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(to top,
+            rgba(22, 44, 30, 0.95) 0%,
+            rgba(22, 44, 30, 0.55) 45%,
+            rgba(22, 44, 30, 0.5) 65%,
+            transparent 100%);
+}
+
+.contact-title {
+    font-size: 340px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 80px;
+    text-align: center;
+    line-height: 1;
+    position: relative;
+    top: 175px;
+    z-index: 2;
+}
+
+/* 🔹 Контакты */
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 4rem 2rem;
+    color: #fff;
+    text-align: center;
+}
+
+/* ряд для телефона и адреса */
+.contact-row {
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* 🔹 Карточки */
+.contact-card {
+    border: 1px solid rgba(255, 255, 255, 0.66);
+    border-radius: 34px;
+    background: rgba(255, 255, 255, 0.05);
+    width: 487px;
+    height: 175px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* почта (широкая) */
+.contact-card.big {
+    width: 1054px;
+    height: 175px;
+}
+
+/* телефон и адрес */
+.contact-card.small {
+    width: 487px;
+}
+
+/* заголовок (почта / телефон / адрес) */
+.contact-label {
+    position: absolute;
+    top: -14px;
+    left: 50%;
+    width: 184px;
+    height: 40px;
+    transform: translateX(-50%);
+    background: #25432b;
+    padding: 0.4rem 1.2rem;
+    border-radius: 34px;
+    font-size: 1rem;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* значения */
+.contact-value {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    margin: 0;
+}
+
+.contact-value a {
+    color: #fff;
+    /* основной цвет текста */
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.contact-value a:hover {
+    color: #25432b;
+    /* твой фирменный акцент (можно поменять) */
+}
+
+/* 🔹 Соцсети */
+.contact-socials {
+    display: flex;
+    gap: 2rem;
+    margin-top: 2rem;
+    justify-content: center;
+}
+
+/* базовый стиль */
+.contact-socials a {
+    font-size: 1.6rem;
+    color: #222;
+    /* тёмная иконка */
+    background: #fff;
+    /* белый круг */
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+}
+
+/* Telegram */
+.contact-socials a:nth-child(1):hover {
+    background: #0088cc;
+    /* голубой */
+    color: #fff;
+}
+
+/* Instagram */
+.contact-socials a:nth-child(2):hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    color: #fff;
+}
+
+/* TikTok */
+.contact-socials a:nth-child(3):hover {
+    background: #010101;
+    /* чёрный фон TikTok */
+    color: #ff0050;
+    /* акцентный */
+}
+
+/* Facebook */
+.contact-socials a:nth-child(4):hover {
+    background: #1877f2;
+    color: #fff;
+}
+
+/* MAP */
+
+.contact-map {
+    position: relative;
+    display: flex;
+    justify-content: center;
+
+}
+
+.map-img {
+    max-width: 600px;
+    width: 100%;
+}
+
+.map-marker {
+    position: absolute;
+    top: 38%;
+    left: 40%;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.map-marker::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 28px;
+    height: 28px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.7;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1.6);
+        opacity: 0;
+    }
+}
+
+.map-tooltip {
+    position: absolute;
+    top: -60px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.7);
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    opacity: 0;
+    transition: 0.3s ease;
+    pointer-events: none;
+}
+
+.map-marker:hover .map-tooltip {
+    opacity: 1;
+    top: -70px;
+}
+
+
+
+@media (min-width: 1900px) and (max-width: 3500px) {
+    .contact-title {
+        font-size: 420px;
+        /* больше надпись */
+        top: 220px;
+    }
+
+    .contact-card {
+        width: 560px;
+        height: 200px;
+    }
+
+    .contact-card.big {
+        width: 1200px;
+        height: 200px;
+    }
+
+    .contact-value {
+        font-size: 1.9rem;
+        letter-spacing: 2.5px;
+    }
+
+    .map-img {
+        max-width: 800px;
+    }
+
+    .contact-socials a {
+        width: 65px;
+        height: 65px;
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 1024px) {
+    .contact-title {
+        font-size: 220px;
+        top: 120px;
+    }
+
+    .contact-card {
+        width: 90%;
+        height: auto;
+        padding: 2rem 1rem;
+    }
+
+    .contact-card.big {
+        width: 95%;
+    }
+
+    .contact-value {
+        font-size: 1.3rem;
+    }
+
+    .map-img {
+        max-width: 500px;
+    }
+}
+
+/* ✅ планшеты и большие телефоны до 768px */
+@media (max-width: 768px) {
+    .contact-title {
+        font-size: 140px;
+        top: 100px;
+    }
+
+    .contact-info {
+        padding: 3rem 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .contact-card {
+        width: 100%;
+        min-height: 140px;
+    }
+
+    .contact-card.big {
+        width: 100%;
+    }
+
+    .contact-label {
+        font-size: 0.9rem;
+        width: auto;
+        padding: 0.3rem 1rem;
+    }
+
+    .contact-value {
+        font-size: 1.2rem;
+    }
+
+    .contact-socials {
+        gap: 1rem;
+    }
+
+    .contact-socials a {
+        width: 45px;
+        height: 45px;
+        font-size: 1.4rem;
+    }
+
+    .map-img {
+        max-width: 400px;
+    }
+}
+
+/* ✅ маленькие телефоны до 480px */
+@media (max-width: 480px) {
+    .contact-title {
+        font-size: 70px;
+        top: 70px;
+        margin-bottom: 40px;
+    }
+
+    .contact-info {
+        padding: 2rem 1rem;
+        gap: 3rem;
+    }
+
+    .contact-card {
+        width: 100%;
+        min-height: 120px;
+        padding: 1.5rem 1rem;
+    }
+
+    .contact-value {
+        font-size: 1rem;
+        letter-spacing: 1px;
+    }
+
+    .contact-socials a {
+        width: 40px;
+        height: 40px;
+        font-size: 1.2rem;
+    }
+
+    .map-img {
+        max-width: 300px;
+    }
+
+    .map-tooltip {
+        font-size: 0.75rem;
+        padding: 6px 10px;
+    }
+}
