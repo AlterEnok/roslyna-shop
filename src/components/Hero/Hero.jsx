@@ -1,5 +1,6 @@
 import './Hero.css';
 import { useEffect, useState } from 'react';
+import { Link as ScrollLink } from "react-scroll";
 import { Link } from 'react-router-dom';
 import heroVideo from '../../assets/background.mp4';
 
@@ -40,7 +41,15 @@ function Hero() {
                 </Link>
 
                 <div className="hero__footer-links">
-                    <Link to="/reviews" className="hero__footer-link">Відгуки</Link>
+                    <ScrollLink
+                        to="reviews"
+                        smooth={true}
+                        duration={600}
+                        offset={-80}
+                        className="hero__footer-link"
+                    >
+                        Відгуки
+                    </ScrollLink>
                     <Link to="/blog" className="hero__footer-link">Блог</Link>
                     <button
                         className="hero__footer-link btn-link"
@@ -50,6 +59,7 @@ function Hero() {
                     </button>
                     <Link to="/blog" className="hero__footer-link">Індивідуальний підбір</Link>
                 </div>
+
             </div>
 
             {/* 🔥 модалка */}

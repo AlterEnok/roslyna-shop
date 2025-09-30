@@ -1,23 +1,20 @@
 import { useEffect, useRef, useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import './StatsSection.css';
 
 function StatsSection() {
-    const { t } = useTranslation();
-
     const stats = [
         {
-            label: t('stats.item1'),
+            label: "Продукція користується попитом як в аптеках, так і онлайн — загальна кількість продажів постійно зростає.",
             value: 1000,
             suffix: '+',
         },
         {
-            label: t('stats.item2'),
+            label: "Ефективність підтверджена — показники засновані на спостереженнях і відгуках.",
             value: 95,
             suffix: '%',
         },
         {
-            label: t('stats.item3'),
+            label: "Рівень довіри до нашої продукції.",
             value: 100,
             suffix: '%',
         },

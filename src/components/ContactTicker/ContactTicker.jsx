@@ -1,21 +1,18 @@
 import React from 'react';
 import './ContactTicker.css';
-import { useTranslation } from 'react-i18next';
 
 function ContactTicker() {
-    const { t } = useTranslation();
-
     return (
         <div className="ticker-wrapper">
             <div className="ticker-container">
                 <div className="ticker-track">
-                    <div className="ticker-item">order@karpatplant.com.ua</div>
-                    <div className="ticker-item">{t('ticker.work_time')}</div>
-                    <div className="ticker-item">{t('ticker.phone')}</div>
+                    <div className="ticker-item">tanusya09@gmail.com</div>
+                    <div className="ticker-item">Пн–Пт: 9:00 – 18:00</div>
+                    <div className="ticker-item">+38 (097) 134-57-97</div>
 
-                    <div className="ticker-item">order@karpatplant.com.ua</div>
-                    <div className="ticker-item">{t('ticker.work_time')}</div>
-                    <div className="ticker-item">{t('ticker.phone')}</div>
+                    <div className="ticker-item">tanusya09@gmail.com</div>
+                    <div className="ticker-item">Пн–Пт: 9:00 – 18:00</div>
+                    <div className="ticker-item">+38 (097) 134-57-97</div>
                 </div>
             </div>
         </div>

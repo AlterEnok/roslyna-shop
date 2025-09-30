@@ -97,3 +97,54 @@
 .auth-modal__submit:hover {
     background: #222;
 }
+
+/* Divider */
+.auth-modal__divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 1.5rem 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.auth-modal__divider::before,
+.auth-modal__divider::after {
+    content: "";
+    flex: 1;
+    border-bottom: 1px solid #ccc;
+}
+
+.auth-modal__divider:not(:empty)::before {
+    margin-right: 0.75em;
+}
+
+.auth-modal__divider:not(:empty)::after {
+    margin-left: 0.75em;
+}
+
+/* Google button */
+.auth-modal__google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s, box-shadow 0.3s;
+}
+
+.auth-modal__google img {
+    width: 20px;
+    height: 20px;
+}
+
+.auth-modal__google:hover {
+    background: #f9f9f9;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}

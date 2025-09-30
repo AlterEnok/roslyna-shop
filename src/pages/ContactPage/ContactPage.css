@@ -44,7 +44,7 @@
     z-index: 2;
 }
 
-/* 🔹 Контакты */
+/* Контакты */
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -55,7 +55,7 @@
     text-align: center;
 }
 
-/* ряд для телефона и адреса */
+
 .contact-row {
     display: flex;
     gap: 2rem;
@@ -63,7 +63,7 @@
     flex-wrap: wrap;
 }
 
-/* 🔹 Карточки */
+
 .contact-card {
     border: 1px solid rgba(255, 255, 255, 0.66);
     border-radius: 34px;
@@ -77,7 +77,7 @@
     position: relative;
 }
 
-/* почта (широкая) */
+/* почта */
 .contact-card.big {
     width: 1054px;
     height: 175px;
@@ -126,7 +126,7 @@
     color: #25432b;
 }
 
-/* 🔹 Соцсети */
+/* Соцсети */
 .contact-socials {
     display: flex;
     gap: 2rem;
@@ -134,13 +134,11 @@
     justify-content: center;
 }
 
-/* базовый стиль */
+
 .contact-socials a {
     font-size: 1.6rem;
     color: #222;
-    /* тёмная иконка */
     background: #fff;
-    /* белый круг */
     border-radius: 50%;
     width: 55px;
     height: 55px;
@@ -153,7 +151,6 @@
 /* Telegram */
 .contact-socials a:nth-child(1):hover {
     background: #0088cc;
-    /* голубой */
     color: #fff;
 }
 
@@ -166,9 +163,7 @@
 /* TikTok */
 .contact-socials a:nth-child(3):hover {
     background: #010101;
-    /* чёрный фон TikTok */
     color: #ff0050;
-    /* акцентный */
 }
 
 /* Facebook */
@@ -253,7 +248,6 @@
 @media (min-width: 1900px) and (max-width: 3500px) {
     .contact-title {
         font-size: 420px;
-        /* больше надпись */
         top: 220px;
     }
 
@@ -308,7 +302,7 @@
     }
 }
 
-/* ✅ планшеты и большие телефоны до 768px */
+/* планшеты и большие телефоны до 768px */
 @media (max-width: 768px) {
     .contact-title {
         font-size: 140px;
@@ -323,10 +317,12 @@
     .contact-card {
         width: 100%;
         min-height: 140px;
+        padding: 1.5rem 1rem;
     }
 
     .contact-card.big {
         width: 100%;
+        height: auto;
     }
 
     .contact-label {
@@ -337,6 +333,11 @@
 
     .contact-value {
         font-size: 1.2rem;
+    }
+
+    .contact-value.email {
+        font-size: 2rem;
+        word-break: break-word;
     }
 
     .contact-socials {
@@ -354,7 +355,7 @@
     }
 }
 
-/* ✅ маленькие телефоны до 480px */
+/*телефоны до 480px */
 @media (max-width: 480px) {
     .contact-title {
         font-size: 70px;
@@ -364,18 +365,28 @@
 
     .contact-info {
         padding: 2rem 1rem;
-        gap: 3rem;
+        gap: 2rem;
     }
 
     .contact-card {
         width: 100%;
         min-height: 120px;
-        padding: 1.5rem 1rem;
+        padding: 1rem;
+    }
+
+    .contact-card.big {
+        height: auto;
+
     }
 
     .contact-value {
         font-size: 1rem;
         letter-spacing: 1px;
+    }
+
+    .contact-value.email {
+        font-size: 1.4rem;
+
     }
 
     .contact-socials a {
@@ -385,7 +396,7 @@
     }
 
     .map-img {
-        max-width: 300px;
+        max-width: 280px;
     }
 
     .map-tooltip {

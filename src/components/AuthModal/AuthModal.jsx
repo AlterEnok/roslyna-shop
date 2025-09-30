@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { useTranslation } from 'react-i18next';
 import './AuthModal.css';
+import googleIcon from '../../assets/google-icon.svg';
 
 function AuthModal({ onClose, onLogin }) {
-    const { t } = useTranslation();
     const [isLogin, setIsLogin] = useState(true);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -29,10 +28,20 @@ function AuthModal({ onClose, onLogin }) {
             setUsername('');
         } catch (err) {
             console.error('Auth error:', err);
-            alert(t('auth.error'));
+            alert('Помилка авторизації. Спробуйте ще раз.');
         } finally {
             setLoading(false);
         }
+    };
+
+    const handleGoogleLogin = () => {
+        // Заглушка для Google авторизации
+        const fakeUser = {
+            name: 'Google User',
+            email: 'googleuser@example.com',
+        };
+        onLogin(fakeUser);
+        onClose();
     };
 
     return (
@@ -43,10 +52,10 @@ function AuthModal({ onClose, onLogin }) {
 
                 <div className="auth-modal__toggle">
                     <button className={isLogin ? 'active' : ''} onClick={() => setIsLogin(true)}>
-                        {t('auth.login')}
+                        Увійти
                     </button>
                     <button className={!isLogin ? 'active' : ''} onClick={() => setIsLogin(false)}>
-                        {t('auth.register')}
+                        Зареєструватися
                     </button>
                 </div>
 
@@ -54,7 +63,7 @@ function AuthModal({ onClose, onLogin }) {
                     {!isLogin && (
                         <input
                             type="text"
-                            placeholder={t('auth.username')}
+                            placeholder="Ім’я користувача"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                             required
@@ -62,26 +71,35 @@ function AuthModal({ onClose, onLogin }) {
                     )}
                     <input
                         type="email"
-                        placeholder={t('auth.email')}
+                        placeholder="Електронна пошта"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
                     />
                     <input
                         type="password"
-                        placeholder={t('auth.password')}
+                        placeholder="Пароль"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
                     />
                     <button type="submit" className="auth-modal__submit" disabled={loading}>
                         {loading
-                            ? t('auth.loading')
+                            ? 'Завантаження...'
                             : isLogin
-                                ? t('auth.login')
-                                : t('auth.register')}
+                                ? 'Увійти'
+                                : 'Зареєструватися'}
                     </button>
                 </form>
+
+                <div className="auth-modal__divider">
+                    <span>або</span>
+                </div>
+
+                <button className="auth-modal__google" onClick={handleGoogleLogin}>
+                    <img src={googleIcon} alt="Google" />
+                    Увійти через Google
+                </button>
             </div>
         </>
     );

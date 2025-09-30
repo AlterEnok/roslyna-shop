@@ -164,6 +164,7 @@
     border: none;
     background: transparent;
     transition: color 0.3s ease;
+    cursor: pointer;
 }
 
 .hero__footer-link::after {
@@ -239,6 +240,11 @@
     border-radius: 8px;
     font-size: 1rem;
     width: 100%;
+
+    resize: vertical;
+    max-height: 200px;
+    min-height: 100px;
+    overflow-y: auto;
 }
 
 .modal-form button {

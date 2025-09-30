@@ -1,4 +1,3 @@
-import { useTranslation } from 'react-i18next';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, A11y } from 'swiper/modules';
 import 'swiper/css';
@@ -8,16 +7,27 @@ import './Reviews.css';
 import reviewImage from '../../assets/review.jpg';
 
 function ReviewSection() {
-    const { t } = useTranslation();
-
-    const reviews = t('reviews.items', { returnObjects: true });
+    const reviews = [
+        {
+            author: "Дмитро Литвинов",
+            text: "Ціна та якість повністю співпадають, не очікував такого ефекту, приємно здивований, рекомендую."
+        },
+        {
+            author: "Ольга Остапенко",
+            text: "Продукт спрацював краще, ніж очікувала. Замовлятиму ще!"
+        },
+        {
+            author: "Ілля Дробний",
+            text: "Дійсно ефективно. Все прийшло швидко, гарне пакування."
+        }
+    ];
 
     return (
-        <section className="review-section">
+        <section className="review-section" id="reviews">
             <div className="review-section__left">
                 <div className="review-section__content">
-                    <p className="review-section__subtitle">{t('reviews.subtitle')}</p>
-                    <p className="review-section__desc">{t('reviews.description')}</p>
+                    <p className="review-section__subtitle">Відгуки наших клієнтів</p>
+                    <p className="review-section__desc">Ось що говорять про нас</p>
 
                     <Swiper
                         modules={[Navigation, Pagination, A11y]}
