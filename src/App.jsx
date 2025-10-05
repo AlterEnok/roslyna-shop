@@ -14,6 +14,7 @@ import CartSidebar from "./components/CartSidebar/CartSidebar";
 
 import HomePage from "./pages/HomePage/HomePage";
 import CatalogPage from "./pages/CatalogPage/CatalogPage";
+import AboutPage from "./pages/AboutPage/AboutPage";
 import WishlistPage from "./pages/WishlistPage/WishlistPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 
@@ -57,7 +58,7 @@ function AnimatedRoutes({ addToCart }) {
         <Route path="/wishlist" element={withAnimation(<WishlistPage />)} />
         <Route path="/contact" element={withAnimation(<ContactPage />)} />
 
-        <Route path="/about" element={withAnimation(<div>About Us</div>)} />
+        <Route path="/about" element={withAnimation(<AboutPage />)} />
         <Route path="/reviews" element={withAnimation(<div>Reviews</div>)} />
         <Route path="/profile" element={withAnimation(<div>Profile</div>)} />
         <Route path="/transactions" element={withAnimation(<div>Transactions</div>)} />

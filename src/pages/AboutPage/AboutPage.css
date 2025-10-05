@@ -1,0 +1,561 @@
+.about-page {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+/* Хедер */
+.about-hero {
+    position: relative;
+    width: 100%;
+    height: 80vh;
+    background-size: cover;
+    background-position: top center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: -80px;
+    margin-bottom: 17dvh;
+}
+
+.about-hero::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(22, 44, 30, 0.25);
+    /* 👈 лёгкий общий оверлей */
+    z-index: 0;
+}
+
+.about-bottom-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 439px;
+    pointer-events: none;
+    z-index: 1;
+    background: linear-gradient(to top,
+            rgba(22, 44, 30, 0.95) 0%,
+            rgba(22, 44, 30, 0.55) 45%,
+            rgba(22, 44, 30, 0.5) 65%,
+            transparent 100%);
+}
+
+.about-title {
+    font-size: 340px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 80px;
+    text-align: center;
+    line-height: 1;
+    position: relative;
+    top: 130px;
+    z-index: 2;
+}
+
+/* Основной блок */
+.about-body {
+    max-width: 1445px;
+    height: 675px;
+    margin: -150px auto 80px;
+    padding: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.66);
+    border-radius: 34px;
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25),
+        0 4px 4px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(218deg,
+            rgba(168, 168, 168, 0.31) 0%,
+            rgba(132, 127, 127, 0.31) 43%,
+            rgba(95, 109, 99, 0.31) 86%);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    z-index: 3;
+}
+
+.about-body__header {
+    text-align: center;
+    position: relative;
+    top: -96px;
+}
+
+.about-pill {
+    display: inline-block;
+    background: #3d5f3e;
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 20px;
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.about-body__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    height: 100%;
+    gap: 2rem;
+}
+
+/* Текст */
+.about-text {
+    flex: 1;
+    color: #fff;
+    font-size: 20px;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.about-text h2 {
+    margin-bottom: 1rem;
+    font-size: 30px;
+    /* фигма */
+    font-weight: 900;
+    /* жирный */
+    letter-spacing: 0.02em;
+    color: #fff;
+}
+
+
+.about-video {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.about-video video {
+    width: 108%;
+    object-fit: cover;
+    margin-right: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.about-features {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6rem;
+    flex-wrap: wrap;
+    margin: 10px auto;
+    max-width: 1200px;
+}
+
+.feature-item {
+    padding: 12px 24px;
+    border: 1px solid rgba(229, 231, 235, 0.42);
+    border-radius: 40px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 500;
+    background: rgba(61, 95, 62, 0.38);
+    transition: all 0.3s ease;
+    cursor: default;
+}
+
+.feature-item:hover {
+    background: rgba(22, 44, 30, 0.7);
+    transform: translateY(-3px);
+}
+
+
+
+
+.about-partners {
+    max-width: 1399px;
+    height: 817px;
+    margin: 80px auto;
+    padding: 2rem;
+    display: flex;
+    gap: 2rem;
+    border-radius: 34px;
+    box-shadow: inset 0 4px 4px rgba(0, 0, 0, 0.25),
+        0 4px 4px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(218deg,
+            rgba(168, 168, 168, 0.31) 0%,
+            rgba(132, 127, 127, 0.31) 43%,
+            rgba(95, 109, 99, 0.31) 86%);
+}
+
+.partners-img {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.partners-img img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.partners-text {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 1.5rem;
+    color: #fff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.partners-box {
+    background: rgba(22, 44, 30, 0.4);
+    border-radius: 20px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.25);
+}
+
+.partners-box h3 {
+    margin-bottom: 1rem;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #fff;
+}
+
+.partners-box ul {
+    padding-left: 1.2rem;
+    margin: 0.5rem 0 0;
+}
+
+.partners-box li {
+    margin-bottom: 0.3rem;
+}
+
+
+
+
+
+
+.about-cta {
+    position: relative;
+    /* нужно для абсолютной кнопки */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 100px 0;
+}
+
+.cta-box {
+    width: 1054px;
+    height: 351px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border-radius: 24px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    position: relative;
+}
+
+.cta-box p {
+    font-size: 1.4rem;
+    color: #fff;
+    font-weight: 500;
+    font-size: 40px;
+    letter-spacing: 0.02em;
+    text-align: center;
+    margin: 0;
+}
+
+.cta-icon {
+    font-size: 1.6rem;
+    margin-right: 0.6rem;
+    vertical-align: middle;
+}
+
+/* Кнопка с эффектом из hero */
+.cta-button {
+    position: absolute;
+    bottom: -25px;
+    /* наполовину выносит кнопку из блока */
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-block;
+    font-size: clamp(1rem, 1.1vw, 1.2rem);
+    font-weight: 500;
+    color: white;
+    padding: 0.75rem 1.6rem;
+    border: 2px solid rgba(255, 255, 255, 0.66);
+    border-radius: 50px;
+    background: linear-gradient(135deg, rgba(90, 130, 100, 0.4), rgba(50, 60, 60, 0.2));
+    text-decoration: none;
+    overflow: hidden;
+    transition: all 0.4s ease;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+    backdrop-filter: blur(6px);
+}
+
+.cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    transform: skewX(-20deg);
+    transition: left 0.5s ease;
+    z-index: 0;
+}
+
+.cta-button:hover::before {
+    left: 100%;
+}
+
+.cta-button:hover {
+    color: white;
+    background: linear-gradient(135deg, rgba(120, 180, 120, 0.6), rgba(80, 100, 100, 0.3));
+}
+
+
+
+@media (min-width: 1900px) and (max-width: 3500px) {
+    .about-hero {
+        height: 90vh;
+    }
+
+    .about-body__header {
+        top: -120px;
+    }
+
+    .about-title {
+        font-size: 420px;
+        top: 160px;
+        margin-bottom: 120px;
+    }
+
+    .about-body {
+        max-width: 1800px;
+        height: 900px;
+        padding: 3rem;
+    }
+
+    .about-text {
+        font-size: 24px;
+        line-height: 1.8;
+    }
+
+    .about-text h2 {
+        font-size: 38px;
+    }
+
+    .about-video video {
+        width: 100%;
+        border-radius: 26px;
+    }
+
+    .about-features {
+        gap: 8rem;
+        max-width: 1500px;
+    }
+
+    .feature-item {
+        font-size: 1.2rem;
+        padding: 16px 32px;
+    }
+
+    /* 🔹 Блок "Партнери / Клієнти" */
+    .about-partners {
+        max-width: 1800px;
+        height: 1000px;
+        padding: 3rem;
+        gap: 3rem;
+    }
+
+    .partners-text {
+        font-size: 1.3rem;
+        gap: 2rem;
+    }
+
+    .partners-box {
+        padding: 2rem;
+        border-radius: 24px;
+    }
+
+    .partners-box h3 {
+        font-size: 1.8rem;
+    }
+
+    .partners-img img {
+        border-radius: 26px;
+        width: 95%;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    /* 🔹 CTA блок */
+    .cta-box {
+        width: 1300px;
+        height: 450px;
+        padding: 3.5rem 3rem;
+    }
+
+    .cta-box p {
+        font-size: 52px;
+    }
+
+    .cta-button {
+        bottom: -35px;
+        font-size: 1.3rem;
+        padding: 1rem 2.2rem;
+    }
+}
+
+@media (max-width: 767px) {
+    .about-hero {
+        height: 60vh;
+        top: -80px;
+        margin-bottom: 10dvh;
+    }
+
+    .about-title {
+        font-size: 120px;
+        top: 80px;
+        margin-bottom: 40px;
+    }
+
+    .about-body {
+        height: auto;
+        margin: -80px auto 40px;
+        z-index: 1;
+        padding: 1.5rem;
+    }
+
+    .about-body__content {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .about-text {
+        font-size: 18px;
+    }
+
+    .about-text h2 {
+        font-size: 24px;
+    }
+
+    .about-video video {
+        width: 100%;
+        margin: 0;
+    }
+
+    .about-features {
+        gap: 1.5rem;
+    }
+
+    /* 🔽 Блок для партнерів і клієнтів */
+    .about-partners {
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .partners-text {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        font-size: 1rem;
+    }
+
+    /* 🔽 Меняем порядок: текст → картинка → текст */
+    .partners-text .partners-box:nth-child(1) {
+        order: 1;
+        /* Для партнерів */
+    }
+
+    .partners-img {
+        order: 0;
+        /* Картинка */
+        width: 100%;
+    }
+
+    .partners-text .partners-box:nth-child(2) {
+        order: 3;
+        /* Для клієнтів */
+    }
+
+    .partners-box h3 {
+        font-size: 1.2rem;
+    }
+
+    .partners-box {
+        padding: 1.2rem;
+    }
+
+    .partners-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    /* CTA блок */
+    .cta-box {
+        width: 95%;
+        height: auto;
+        padding: 2rem 1.5rem;
+    }
+
+    .cta-box p {
+        font-size: 22px;
+    }
+
+    .cta-button {
+        bottom: -20px;
+        font-size: 1rem;
+        padding: 0.6rem 1.4rem;
+    }
+}
+
+/* 📱 Маленькие телефоны */
+@media (max-width: 480px) {
+    .about-title {
+        font-size: 72px;
+        top: 60px;
+    }
+
+    .about-pill {
+        font-size: 0.85rem;
+        padding: 10px 18px;
+    }
+
+    .about-text {
+        font-size: 16px;
+    }
+
+    .about-text h2 {
+        font-size: 20px;
+    }
+
+    .partners-box {
+        padding: 1rem;
+    }
+
+    .partners-box h3 {
+        font-size: 1rem;
+    }
+
+    .cta-box p {
+        font-size: 18px;
+    }
+
+    .cta-button {
+        font-size: 0.9rem;
+        padding: 0.5rem 1.2rem;
+    }
+}

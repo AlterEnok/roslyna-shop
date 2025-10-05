@@ -150,6 +150,74 @@
     text-decoration: underline;
 }
 
+
+@media (min-width: 1900px) and (max-width: 3500px) {
+    .footer {
+        padding: 100px 60px 50px;
+    }
+
+    .footer__container {
+        max-width: 1800px;
+        gap: 80px;
+    }
+
+    .footer__top {
+        gap: 80px;
+    }
+
+    .footer__brand {
+        max-width: 400px;
+        gap: 25px;
+    }
+
+    .footer__logo {
+        width: 220px;
+    }
+
+    .footer__desc {
+        font-size: 24px;
+        line-height: 130%;
+    }
+
+    .footer__nav-wrapper {
+        gap: 120px;
+        margin-top: 50px;
+    }
+
+    .footer__title {
+        font-size: 32px;
+        margin-bottom: 20px;
+    }
+
+    .footer__nav a {
+        font-size: 20px;
+        line-height: 160%;
+    }
+
+    .footer__socials a {
+        font-size: 26px;
+    }
+
+    .footer__blog {
+        max-width: 340px;
+        gap: 30px;
+        margin-top: 40px;
+    }
+
+    .footer__blog-btn {
+        width: 200px;
+        height: 60px;
+        font-size: 22px;
+        padding: 12px 28px;
+    }
+
+    .footer__copyright {
+        font-size: 24px;
+        padding-top: 25px;
+    }
+}
+
+
 /* Планшеты (от 768px до 1023px) */
 @media (max-width: 1023px) {
     .footer__top {
