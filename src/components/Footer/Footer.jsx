@@ -45,7 +45,7 @@ function Footer() {
                             <Link to="/terms">Умови використання</Link>
                             <Link to="/privacy">Політика конфіденційності</Link>
                             <Link to="/certificates">Сертифікати</Link>
-                            <Link to="/returns">Повернення та обмін</Link>
+                            <Link to="/return">Повернення та обмін</Link>
                         </nav>
 
                         <nav className="footer__nav">

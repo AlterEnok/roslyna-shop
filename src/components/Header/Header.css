@@ -336,7 +336,7 @@
     right: -250px;
     width: 250px;
     height: 100vh;
-    background-color: #000;
+    background: linear-gradient(181deg, #0d2d1e 5.77%, #3d5f3e 30.29%, #779b7f 49.04%, #4d6a50 75.96%, #25351b 100%);
     color: white;
     padding: 3rem 1.5rem;
     display: flex;

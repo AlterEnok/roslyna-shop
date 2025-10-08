@@ -1,0 +1,98 @@
+.return-page {
+    padding: 8rem 2rem;
+    color: #fff;
+    min-height: calc(100vh - 300px);
+    font-family: "Jost", sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.return-page__container {
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #0e2617;
+    padding: 3rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.return-page__title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #b9ffca;
+}
+
+.return-page p {
+    margin-bottom: 1rem;
+    line-height: 1.7;
+}
+
+.return-page ul {
+    margin: 1rem 0 1.5rem 2rem;
+    list-style-type: disc;
+}
+
+.return-page a {
+    color: #a4eebc;
+    text-decoration: underline;
+}
+
+.return-page strong {
+    color: #a9f3be;
+}
+
+/* 📱 Адаптив */
+@media (max-width: 768px) {
+    .return-page {
+        padding: 6rem 1.5rem;
+        min-height: calc(100vh - 260px);
+    }
+
+    .return-page__container {
+        padding: 2rem;
+        border-radius: 15px;
+    }
+
+    .return-page__title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .return-page p {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .return-page ul {
+        margin-left: 1.2rem;
+    }
+}
+
+@media (max-width: 430px) {
+    .return-page {
+        padding: 5rem 1rem;
+        min-height: calc(100vh - 220px);
+    }
+
+    .return-page__container {
+        padding: 1.5rem;
+        border-radius: 12px;
+    }
+
+    .return-page__title {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+
+    .return-page p {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .return-page ul {
+        margin-left: 1rem;
+    }
+}

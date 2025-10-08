@@ -13,20 +13,22 @@ import gsap from 'gsap';
 
 // временные товары
 const allProducts = [
-    { id: 1, title: "Рослина карпат: 6 в одному", subtitle: "Евкаліпт, чорний горіх, пижма, розторопша", category: "bady", price: 2490, image: product1Img },
-    { id: 2, title: "L-Карнітин PRO", subtitle: "Підтримка імунітету та енергії", category: "tabs", price: 2690, image: product2Img },
-    { id: 3, title: "Журавлина СИРОП", subtitle: "Підтримка імунітету та здоров’я", category: "gels", price: 2590, image: product3Img },
-    { id: 4, title: "Антивірин Муршине дерево", subtitle: "Підтримка імунітету та здоров’я", category: "bady", price: 2590, image: product4Img }
-
-
+    { id: 1, title: "Рослина карпат: 6 в одному", subtitle: "Евкаліпт, чорний горіх, пижма, розторопша", category: "Herbal", price: 2490, image: product1Img },
+    { id: 2, title: "L-Карнітин PRO", subtitle: "Підтримка імунітету та енергії", category: "Herbal-complex", price: 2690, image: product2Img },
+    { id: 3, title: "Журавлина СИРОП", subtitle: "Підтримка імунітету та здоров’я", category: "Herbal-syrups", price: 2590, image: product3Img },
+    { id: 4, title: "Антивірин Муршине дерево", subtitle: "Підтримка імунітету та здоров’я", category: "Cosmetic balms", price: 2590, image: product4Img },
 ];
 
 // категории для фильтра
 const categories = [
     { value: "all", label: "Усе" },
-    { value: "gels", label: "Гелі" },
-    { value: "tabs", label: "Таблетки" },
-    { value: "bady", label: "Бади" }
+    { value: "Herbal", label: "Фіто препарати " },
+    { value: "Herbal-complex", label: "Фіто комплекси " },
+    { value: "Herbal-candless", label: "Фіто свічки " },
+    { value: "Herbal-syrups", label: "Фіто сиропи" },
+    { value: "Natural antiseptics ", label: "Природні антисептики" },
+    { value: "Cosmetic balms  ", label: "Косметичні бальзами " }
+
 ];
 
 export default function CatalogPage({ addToCart }) {

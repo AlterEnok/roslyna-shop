@@ -90,7 +90,7 @@
 
 
 .catalog-filters button {
-    padding: 10px 20px;
+    padding: 10px 10px;
     border-radius: 30px;
     border: 2px solid #fff;
     background: transparent;
@@ -178,13 +178,23 @@
 
     .catalog-filters__wrapper {
         width: 90%;
-        height: auto;
-        padding: 20px;
-        top: 60px;
+        padding: 20px 25px;
+        border-radius: 40px;
+        top: 70px;
+    }
+
+    .catalog-filters {
+        gap: 15px;
+        justify-content: center;
     }
 
     .catalog-filters button {
-        padding: 0 18px;
+        font-size: 16px;
+        padding: 8px 16px;
+        border-radius: 25px;
+        flex: 0 1 calc(50% - 15px);
+        /* ровно по 2 в ряд */
+        text-align: center;
     }
 
     .catalog-description {
@@ -208,6 +218,18 @@
 }
 
 @media (max-width: 480px) {
+    .catalog-filters__wrapper {
+        width: 95%;
+        padding: 15px 18px;
+        border-radius: 25px;
+        top: 50px;
+    }
+
+    .catalog-filters {
+        gap: 10px;
+        justify-content: center;
+    }
+
     .catalog-title {
         font-size: 90px;
         top: 60px;
@@ -218,11 +240,25 @@
         margin: 20px auto;
     }
 
+    .catalog-filters button {
+        flex: 0 1 calc(50% - 10px);
+        /* по 2 в ряд */
+        text-align: center;
+        font-size: 12px;
+        padding: 8px 10px;
+    }
+
+    /* Чтобы последняя кнопка не растягивалась на всю ширину */
+    .catalog-filters button:nth-child(odd):last-child {
+        flex: 0 1 calc(50% - 10px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+
     .pagination {
         gap: 4px;
     }
 
-    .pagination button,
     .pagination .dots {
         min-width: 28px;
         height: 28px;

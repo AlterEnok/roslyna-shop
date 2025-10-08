@@ -2,10 +2,10 @@ import './Categories.css';
 import { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import creamImg from '../../assets/gel.jpg';
-import intimateGelImg from '../../assets/oil.jpg';
-import faceCareImg from '../../assets/herbs.jpg';
-import capsulesImg from '../../assets/capsules.jpg';
+import creamImg from '../../assets/categories1.jpg';
+import intimateGelImg from '../../assets/categories2.jpg';
+import faceCareImg from '../../assets/categories3.jpg';
+import capsulesImg from '../../assets/categories4.jpg';
 
 function Categories() {
     const sectionRef = useRef(null);
@@ -14,12 +14,11 @@ function Categories() {
     const navigate = useNavigate();
 
     const categories = [
-        { title: 'Креми та бальзами', image: creamImg },
-        { title: 'Інтимна гігієна', image: intimateGelImg },
-        { title: 'Догляд за обличчям', image: faceCareImg },
-        { title: 'Капсули та БАДи', image: capsulesImg },
+        { image: creamImg },
+        { image: intimateGelImg },
+        { image: faceCareImg },
+        { image: capsulesImg },
     ];
-
 
     useEffect(() => {
         const cards = document.querySelectorAll('.category-card');
@@ -61,17 +60,20 @@ function Categories() {
                 {categories.map((cat, index) => (
                     <div
                         key={index}
-                        className={`category-card ${visibleIndexes.includes(index) ? 'fade-in' : ''} ${index === 1 || index === 2 ? 'raised' : ''}`}
+                        className={`category-card ${visibleIndexes.includes(index) ? 'fade-in' : ''} ${index === 1 || index === 2 ? 'raised' : ''
+                            }`}
                         data-index={index}
                         style={{ transitionDelay: `${index * 0.2}s` }}
                     >
-                        <img src={cat.image} alt={cat.title} className="category-card__img" />
-                        <div className="category-card__label">{cat.title}</div>
+                        <img src={cat.image} alt={`category-${index}`} className="category-card__img" />
                     </div>
                 ))}
             </div>
 
-            <div className={`categories__text ${textVisible ? 'text-visible' : ''}`} style={{ transitionDelay: '0.3s' }}>
+            <div
+                className={`categories__text ${textVisible ? 'text-visible' : ''}`}
+                style={{ transitionDelay: '0.3s' }}
+            >
                 <h4>Ми сьогодні</h4>
                 <p>
                     Лідерство - це сила, здатна зібрати всі частини в єдине ціле.
@@ -88,7 +90,6 @@ function Categories() {
                     Детальніше
                 </button>
             </div>
-
         </section>
     );
 }

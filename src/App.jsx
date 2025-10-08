@@ -18,6 +18,11 @@ import AboutPage from "./pages/AboutPage/AboutPage";
 import WishlistPage from "./pages/WishlistPage/WishlistPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 
+
+import Privacy from './pages/Privacy/Privacy';
+import Terms from './pages/Terms/Terms';
+import Return from './pages/Return/Return';
+
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
 import { WishlistProvider } from "./context/WishlistContext.jsx";
@@ -57,6 +62,10 @@ function AnimatedRoutes({ addToCart }) {
         <Route path="/product/:id" element={withAnimation(<ProductPage addToCart={addToCart} />)} />
         <Route path="/wishlist" element={withAnimation(<WishlistPage />)} />
         <Route path="/contact" element={withAnimation(<ContactPage />)} />
+        <Route path="/privacy" element={withAnimation(<Privacy />)} />
+        <Route path="/terms" element={withAnimation(<Terms />)} />
+        <Route path="/return" element={withAnimation(<Return />)} />
+
 
         <Route path="/about" element={withAnimation(<AboutPage />)} />
         <Route path="/reviews" element={withAnimation(<div>Reviews</div>)} />
