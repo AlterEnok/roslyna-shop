@@ -10,7 +10,7 @@ import { faTelegramPlane, faInstagram, faFacebook, faTiktok } from "@fortawesome
 function ContactPage() {
     return (
         <section className="contact-page">
-            {/* 🔹 Верхушка */}
+
             <div
                 className="contact-hero"
                 style={{ backgroundImage: `url(${heroImg})` }}

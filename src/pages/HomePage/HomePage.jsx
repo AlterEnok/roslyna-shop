@@ -15,12 +15,13 @@ function HomePage({ addToCart }) {
         <>
             <Hero />
             <ContactTicker />
-            <FounderSection />
             <Categories />
             <ProductList addToCart={addToCart} isPreview />
             <StatsSection />
+            <FounderSection />
             <Reviews />
             <Location />
+
             <Footer />
         </>
     );

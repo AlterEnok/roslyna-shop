@@ -17,11 +17,15 @@ import CatalogPage from "./pages/CatalogPage/CatalogPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
 import WishlistPage from "./pages/WishlistPage/WishlistPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
+import BlogPage from "./pages/BlogPage/BlogPage";
+import BlogDetails1 from "./pages/BlogDetails/BlogDetails";
 
 
 import Privacy from './pages/Privacy/Privacy';
 import Terms from './pages/Terms/Terms';
 import Return from './pages/Return/Return';
+import Certificates from './pages/Certificate/Certificate';
+
 
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { CartProvider } from "./context/CartContext.jsx";
@@ -64,10 +68,14 @@ function AnimatedRoutes({ addToCart }) {
         <Route path="/contact" element={withAnimation(<ContactPage />)} />
         <Route path="/privacy" element={withAnimation(<Privacy />)} />
         <Route path="/terms" element={withAnimation(<Terms />)} />
+        <Route path="/certificates" element={withAnimation(<Certificates />)} />
         <Route path="/return" element={withAnimation(<Return />)} />
 
 
         <Route path="/about" element={withAnimation(<AboutPage />)} />
+        <Route path="/blog" element={withAnimation(<BlogPage />)} />
+        <Route path="/blog/1" element={withAnimation(<BlogDetails1 />)} />
+
         <Route path="/reviews" element={withAnimation(<div>Reviews</div>)} />
         <Route path="/profile" element={withAnimation(<div>Profile</div>)} />
         <Route path="/transactions" element={withAnimation(<div>Transactions</div>)} />

@@ -55,7 +55,7 @@
     z-index: 2;
 }
 
-/* Контакты */
+
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -88,7 +88,7 @@
     position: relative;
 }
 
-/* почта */
+
 .contact-card.big {
     width: 1054px;
     height: 175px;
@@ -137,7 +137,7 @@
     color: #25432b;
 }
 
-/* Соцсети */
+
 .contact-socials {
     display: flex;
     gap: 2rem;
@@ -159,31 +159,31 @@
     transition: 0.3s;
 }
 
-/* Telegram */
+
 .contact-socials a:nth-child(1):hover {
     background: #0088cc;
     color: #fff;
 }
 
-/* Instagram */
+
 .contact-socials a:nth-child(2):hover {
     background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
     color: #fff;
 }
 
-/* TikTok */
+
 .contact-socials a:nth-child(3):hover {
     background: #010101;
     color: #ff0050;
 }
 
-/* Facebook */
+
 .contact-socials a:nth-child(4):hover {
     background: #1877f2;
     color: #fff;
 }
 
-/* MAP */
+
 
 .contact-map {
     position: relative;
@@ -338,6 +338,7 @@
 
     .contact-label {
         font-size: 0.9rem;
+        top: -23px;
         width: auto;
         padding: 0.3rem 1rem;
     }

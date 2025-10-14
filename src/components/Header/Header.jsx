@@ -99,7 +99,7 @@ function Header({
                   <div className="user-dropdown__menu">
                     <p className="user-dropdown__greeting">Привіт, {user?.name || 'Користувач'}</p>
                     <Link to="/profile" className="user-dropdown__item" onClick={closeMenu}>Профіль</Link>
-                    <Link to="/transactions" className="user-dropdown__item" onClick={closeMenu}>Останні транзакції</Link>
+                    <Link to="/transactions" className="user-dropdown__item" onClick={closeMenu}>Мої покупки</Link>
                     <button
                       className="user-dropdown__logout"
                       onClick={() => { onLogout(); closeMenu(); }}

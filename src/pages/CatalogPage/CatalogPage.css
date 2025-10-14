@@ -28,13 +28,12 @@
     z-index: 0;
 }
 
-/* ⬇️ Добавляем градиент через псевдоэлемент */
+
 .catalog-bottom-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     width: 100%;
-    /* ✅ вместо 1440px */
     height: 439px;
     pointer-events: none;
     z-index: 1;
@@ -138,7 +137,7 @@
     transition: 0.3s;
 }
 
-/* точки "..." в пагинации */
+
 .pagination .dots {
     display: inline-flex;
     align-items: center;
@@ -162,7 +161,7 @@
     color: #fff;
 }
 
-/* ✅ адаптив */
+
 @media (max-width: 1024px) {
     .catalog-description {
         font-size: 18px;
@@ -193,7 +192,6 @@
         padding: 8px 16px;
         border-radius: 25px;
         flex: 0 1 calc(50% - 15px);
-        /* ровно по 2 в ряд */
         text-align: center;
     }
 
@@ -242,13 +240,12 @@
 
     .catalog-filters button {
         flex: 0 1 calc(50% - 10px);
-        /* по 2 в ряд */
         text-align: center;
         font-size: 12px;
         padding: 8px 10px;
     }
 
-    /* Чтобы последняя кнопка не растягивалась на всю ширину */
+
     .catalog-filters button:nth-child(odd):last-child {
         flex: 0 1 calc(50% - 10px);
         margin-left: auto;
