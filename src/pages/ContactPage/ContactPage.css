@@ -313,7 +313,7 @@
     }
 }
 
-/* планшеты и большие телефоны до 768px */
+
 @media (max-width: 768px) {
     .contact-title {
         font-size: 140px;
@@ -367,7 +367,7 @@
     }
 }
 
-/*телефоны до 480px */
+
 @media (max-width: 480px) {
     .contact-title {
         font-size: 70px;

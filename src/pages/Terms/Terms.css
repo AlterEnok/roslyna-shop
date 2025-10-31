@@ -8,7 +8,6 @@
 
 .terms-page__container {
     flex: 1;
-    /* тянет контент, чтобы футер шел в самый низ */
     max-width: 900px;
     margin: 8rem auto 4rem auto;
     background-color: #0e1f13;
