@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import usePageTitle from "../../hooks/usePageTitle";
 
+import novaPoshta from "../../assets/nova-poshta.png";
+import ukrPoshta from "../../assets/ukrposhta.png";
+
+
 const NOVA_API_KEY = "f17ca2b162dae71305f782cddd7d71ce";
 
 function DeliveryPaymentPage() {
@@ -170,11 +174,7 @@ function DeliveryPaymentPage() {
                                             checked={deliveryService === "nova"}
                                             onChange={() => setDeliveryService("nova")}
                                         />
-                                        <img
-                                            src="/src/assets/nova-poshta.png"
-                                            alt="Нова Пошта"
-                                            className="delivery__icon"
-                                        />
+                                        <img src={novaPoshta} alt="Нова Пошта" className="delivery__icon" />
                                         Нова пошта
                                     </label>
                                     <label>
@@ -185,11 +185,7 @@ function DeliveryPaymentPage() {
                                             checked={deliveryService === "ukr"}
                                             onChange={() => setDeliveryService("ukr")}
                                         />
-                                        <img
-                                            src="/src/assets/ukrposhta.png"
-                                            alt="Укрпошта"
-                                            className="delivery__icon"
-                                        />
+                                        <img src={ukrPoshta} alt="Укрпошта" className="delivery__icon" />
                                         Укрпошта
                                     </label>
                                 </div>
