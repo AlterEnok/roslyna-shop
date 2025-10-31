@@ -9,7 +9,7 @@ export const WishlistProvider = ({ children }) => {
         return stored ? JSON.parse(stored) : [];
     });
 
-    // сохраняем в localStorage
+
     useEffect(() => {
         localStorage.setItem("wishlist", JSON.stringify(wishlist));
     }, [wishlist]);

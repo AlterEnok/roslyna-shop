@@ -92,7 +92,9 @@
     font-weight: 700;
 }
 
-
+.blog-details__content ul {
+    list-style: none;
+}
 
 
 
@@ -169,7 +171,7 @@
     }
 }
 
-/* --- Средние телефоны (до 767px) --- */
+
 @media (max-width: 767px) {
     .blog-details__header {
         margin-top: 2.5rem;
@@ -202,7 +204,7 @@
     }
 }
 
-/* --- Маленькие телефоны (до 480px) --- */
+
 @media (max-width: 480px) {
     .blog-details__author {
         font-size: 24px;
@@ -229,7 +231,7 @@
     }
 }
 
-/* --- Очень маленькие экраны (до 360px) --- */
+
 @media (max-width: 360px) {
     .blog-details__author {
         font-size: 20px;

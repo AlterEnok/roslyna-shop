@@ -70,7 +70,7 @@
 }
 
 .hero__title {
-    font-size: clamp(2.5rem, 6vw, 5rem);
+    font-size: clamp(2.5rem, 6vw, 4rem);
     font-family: 'Georgia', serif;
     font-weight: bold;
     letter-spacing: 2px;
@@ -78,6 +78,17 @@
     margin-bottom: 1.5rem;
     position: relative;
     top: 9dvh;
+}
+
+.hero__subtitle {
+    font-size: 20px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 27px;
+    letter-spacing: 0.5px;
+    text-transform: none;
+    position: relative;
+    top: 60px;
 }
 
 .hero__text {
@@ -187,7 +198,7 @@
 }
 
 
-/* 🔥 Модалка */
+/*Модалка */
 .modal-overlay {
     position: fixed;
     inset: 0;
@@ -282,9 +293,115 @@
     transition: color 0.3s ease;
 }
 
-@media(max-width:768px) {
+@media (min-width: 1900px) and (max-width: 3500px) {
+    .hero {
+        height: 110vh;
+        top: -100px;
+    }
+
+    .hero__content {
+        max-width: 1200px;
+        padding: 4rem;
+        margin-top: 14vh;
+    }
+
     .hero__title {
-        font-size: clamp(1.9rem, 6vw, 5rem);
+        font-size: 5rem;
+        letter-spacing: 3px;
+        margin-bottom: 2rem;
+        top: 7dvh;
+    }
+
+    .hero__subtitle {
+        font-size: 22px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.85);
+        margin-top: 27px;
+        letter-spacing: 0.5px;
+        text-transform: none;
+        position: relative;
+        top: 51px;
+    }
+
+    .hero__text {
+        font-size: 2.2rem;
+        line-height: 1.9;
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        top: 7dvh;
+    }
+
+    .hero__button {
+        font-size: 1.4rem;
+        padding: 1rem 2.6rem;
+        border-width: 3px;
+        top: 9dvh;
+    }
+
+    .hero__footer-links {
+        gap: 4rem;
+        margin-top: 26dvh;
+    }
+
+    .hero__footer-link {
+        font-size: 2rem;
+    }
+
+    .hero__overlay {
+        height: 40%;
+        background: linear-gradient(to top,
+                rgba(22, 44, 30, 0.96) 0%,
+                rgba(22, 44, 30, 0.6) 40%,
+                rgba(22, 44, 30, 0.4) 70%,
+                transparent 100%);
+    }
+
+    .hero__overlay--top {
+        background: linear-gradient(to bottom,
+                rgba(5, 20, 10, 0.5) 0%,
+                rgba(5, 20, 10, 0.4) 40%,
+                rgba(5, 20, 10, 0.25) 70%,
+                transparent 100%);
+    }
+
+    .modal {
+        max-width: 700px;
+        padding: 3rem;
+        border-radius: 20px;
+    }
+
+    .modal h2 {
+        font-size: 2.2rem;
+    }
+
+    .modal-form input,
+    .modal-form textarea {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+
+    .modal-form button {
+        font-size: 1.2rem;
+        padding: 1rem;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    .hero__title {
+        font-size: clamp(1.7rem, 6vw, 5rem);
+    }
+
+    .hero__subtitle {
+        font-size: 18px;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.85);
+        margin-top: 27px;
+        letter-spacing: 0.5px;
+        text-transform: none;
+        position: relative;
+        top: 51px;
     }
 
     .hero__footer-links {
@@ -297,5 +414,63 @@
     .hero__footer-link {
         font-size: 1.1rem;
         text-align: center;
+    }
+}
+
+
+@media (min-width: 380px) and (max-width: 480px) {
+    .hero__title {
+        font-size: clamp(1rem, 8vw, 3.4rem);
+        margin-top: -1rem;
+    }
+
+    .hero__subtitle {
+        font-size: 19px;
+        top: 70px;
+    }
+
+    .hero__footer-links {
+        margin-top: 9rem;
+    }
+}
+
+
+@media (max-width: 380px) {
+    .hero__title {
+        font-size: clamp(1.5rem, 7vw, 2.6rem);
+    }
+
+    .hero__subtitle {
+        font-size: 16px;
+    }
+
+    .hero__footer-links {
+        margin-top: 8rem;
+    }
+}
+
+
+@media (max-width: 350px) {
+    .hero__title {
+        font-size: 1.6rem;
+    }
+
+    .hero__subtitle {
+        font-size: 14px;
+        top: 28px;
+    }
+
+    .hero__footer-links {
+        gap: 0.8rem;
+        margin-top: 7rem;
+    }
+
+    .hero__footer-link {
+        font-size: 0.95rem;
+    }
+
+    .hero__button {
+        font-size: 0.9rem;
+        padding: 8px 20px;
     }
 }

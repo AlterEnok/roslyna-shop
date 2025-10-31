@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './Header.css';
 import logo from '../../assets/logo.png';
 import cartIcon from '../../assets/cart.png';
@@ -20,20 +20,21 @@ function Header({
   const [cartHighlight, setCartHighlight] = useState(false);
   const [wishlistHighlight, setWishlistHighlight] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const navigate = useNavigate();
 
   const { wishlist } = useContext(WishlistContext);
 
   const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
   const wishlistCount = wishlist.length;
 
-  // Подсветка бейджа корзины
+
   useEffect(() => {
     if (totalQuantity > 0) {
       setCartHighlight(true);
     }
   }, [totalQuantity]);
 
-  // Подсветка бейджа избранного
+
   useEffect(() => {
     if (wishlistCount > 0) {
       setWishlistHighlight(true);
@@ -60,13 +61,40 @@ function Header({
 
   useEffect(() => {
     const header = document.querySelector('.header');
+    if (!header) return;
+
+    let lastScroll = 0;
+
     const handleScroll = () => {
-      if (window.scrollY > 50) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
+      const currentScroll = window.scrollY;
+
+      if (currentScroll <= 50) {
+
+        header.classList.remove('scroll-down', 'scroll-up');
+        header.classList.add('scrolled');
+      } else if (currentScroll > lastScroll) {
+
+        header.classList.add('scroll-down');
+        header.classList.remove('scroll-up', 'scrolled');
+      } else if (currentScroll < lastScroll) {
+
+        header.classList.add('scroll-up');
+        header.classList.remove('scroll-down');
+      }
+
+      lastScroll = currentScroll;
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+
+
+  const handleLinkClick = () => {
+    setShowDropdown(false);
+    closeMenu();
+  };
 
   return (
     <>
@@ -97,12 +125,34 @@ function Header({
                 </button>
                 {showDropdown && (
                   <div className="user-dropdown__menu">
-                    <p className="user-dropdown__greeting">Привіт, {user?.name || 'Користувач'}</p>
-                    <Link to="/profile" className="user-dropdown__item" onClick={closeMenu}>Профіль</Link>
-                    <Link to="/transactions" className="user-dropdown__item" onClick={closeMenu}>Мої покупки</Link>
+                    <p className="user-dropdown__greeting">
+                      Привіт, {user?.name || 'Користувач'}
+                    </p>
+
+                    <Link
+                      to="/profile"
+                      className="user-dropdown__item"
+                      onClick={handleLinkClick}
+                    >
+                      Профіль
+                    </Link>
+
+                    <Link
+                      to="/purchases"
+                      className="user-dropdown__item"
+                      onClick={handleLinkClick}
+                    >
+                      Мої покупки
+                    </Link>
+
                     <button
                       className="user-dropdown__logout"
-                      onClick={() => { onLogout(); closeMenu(); }}
+                      onClick={() => {
+                        onLogout();
+                        setShowDropdown(false);
+                        closeMenu();
+                        navigate('/'); //  редирект на главную после выхода
+                      }}
                     >
                       Вийти
                     </button>
@@ -141,7 +191,6 @@ function Header({
                 {totalQuantity}
               </span>
             )}
-
           </button>
 
           {/* Burger */}

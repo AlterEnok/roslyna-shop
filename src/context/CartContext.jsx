@@ -3,6 +3,7 @@ import React, { createContext, useState } from "react";
 
 const CartContext = createContext();
 
+
 export function CartProvider({ children }) {
     const [cartItems, setCartItems] = useState([]);
     const [isCartOpen, setIsCartOpen] = useState(false);
@@ -17,7 +18,7 @@ export function CartProvider({ children }) {
                         : i
                 );
             }
-            return [...prev, { ...item, quantity: item.quantity || 1 }]; // 🔑 тут фикс
+            return [...prev, { ...item, quantity: item.quantity || 1 }];
         });
     };
 
@@ -39,6 +40,7 @@ export function CartProvider({ children }) {
 
     const toggleCart = () => setIsCartOpen(prev => !prev);
     const closeCart = () => setIsCartOpen(false);
+    const clearCart = () => setCartItems([]);
 
     return (
         <CartContext.Provider
@@ -51,6 +53,7 @@ export function CartProvider({ children }) {
                 isCartOpen,
                 toggleCart,
                 closeCart,
+                clearCart,
             }}
         >
             {children}

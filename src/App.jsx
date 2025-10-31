@@ -12,6 +12,7 @@ import AuthModal from "./components/AuthModal/AuthModal";
 import CartOverlay from "./components/CartOverlay/CartOverlay";
 import CartSidebar from "./components/CartSidebar/CartSidebar";
 
+import Preloader from "./components/Preloader/Preloader";
 import HomePage from "./pages/HomePage/HomePage";
 import CatalogPage from "./pages/CatalogPage/CatalogPage";
 import AboutPage from "./pages/AboutPage/AboutPage";
@@ -19,7 +20,12 @@ import WishlistPage from "./pages/WishlistPage/WishlistPage";
 import ContactPage from "./pages/ContactPage/ContactPage";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import BlogDetails1 from "./pages/BlogDetails/BlogDetails";
-
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
+import PurchasesPage from "./pages/PurchasesPage/PurchasesPage";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import DeliveryPaymentPage from "./pages/DeliveryPaymentPage/DeliveryPaymentPage";
+import SuccessPage from "./pages/SuccessPage/SuccessPage";
+import FailPage from "./pages/FailPage/FailPage";
 
 import Privacy from './pages/Privacy/Privacy';
 import Terms from './pages/Terms/Terms';
@@ -34,7 +40,7 @@ import { WishlistProvider } from "./context/WishlistContext.jsx";
 import { useAuth } from "./context/useAuth.jsx";
 import { useCart } from "./context/useCart.jsx";
 
-//  Анимация для переходов
+
 const pageVariants = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
@@ -76,9 +82,12 @@ function AnimatedRoutes({ addToCart }) {
         <Route path="/blog" element={withAnimation(<BlogPage />)} />
         <Route path="/blog/1" element={withAnimation(<BlogDetails1 />)} />
 
-        <Route path="/reviews" element={withAnimation(<div>Reviews</div>)} />
-        <Route path="/profile" element={withAnimation(<div>Profile</div>)} />
-        <Route path="/transactions" element={withAnimation(<div>Transactions</div>)} />
+        <Route path="/checkout" element={withAnimation(<CheckoutPage />)} />
+        <Route path="/profile" element={withAnimation(<ProfilePage />)} />
+        <Route path="/purchases" element={withAnimation(<PurchasesPage />)} />
+        <Route path="/delivery" element={withAnimation(<DeliveryPaymentPage />)} />
+        <Route path="/success" element={withAnimation(<SuccessPage />)} />
+        <Route path="/fail" element={withAnimation(<FailPage />)} />
       </Routes>
     </AnimatePresence>
   );
@@ -140,6 +149,7 @@ export default function App() {
     <AuthProvider>
       <CartProvider>
         <WishlistProvider>
+          <Preloader />
           <AppContent />
         </WishlistProvider>
       </CartProvider>

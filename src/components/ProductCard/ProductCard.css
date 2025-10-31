@@ -1,8 +1,6 @@
 .product-card {
     width: 280px;
-    /* фикс ширина */
     height: 444px;
-    /* фикс высота */
     margin: 0 auto;
     border-radius: 20px;
     background: #fff;
@@ -18,7 +16,7 @@
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
 }
 
-/* картинка */
+
 .product-card__image-wrapper {
     position: relative;
     height: 230px;
@@ -36,28 +34,22 @@
     transform: scale(1.06);
 }
 
-/* блок с инфо */
+
 .product-card__info {
     padding: 1rem 1.2rem;
     text-align: left;
     display: flex;
-    /* делаем flex */
     flex-direction: column;
-    /* вертикально */
     justify-content: space-between;
-    /* равномерно растягиваем */
     height: calc(100% - 230px);
-    /* оставшееся место после картинки */
 }
 
 .product-card__title {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 1rem;
-    /* можно чуть меньше */
     color: #111;
     min-height: 2.6rem;
-    /* фикс высота для 2 строк */
 }
 
 .product-card__subtitle {
@@ -77,27 +69,23 @@
     background: #fff;
     border: 1.5px solid #444;
     border-radius: 999px;
-    /* овальчик */
     cursor: pointer;
     transition: all 0.3s ease;
     text-decoration: none;
-    /* убираем подчёркивание */
 }
 
 .product-card__details:hover {
     background: #2a9d5f;
-    /* фирменный цвет */
     color: #fff;
     border-color: #2a9d5f;
 }
 
-/* цена + кнопки */
+
 .product-card__actions {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: auto;
-    /* уезжает вниз */
 }
 
 .product-card__price {
@@ -106,14 +94,16 @@
     color: #111;
 }
 
-/* контейнер для кнопок */
+
+
+
 .product-card__buttons {
     display: flex;
     align-items: center;
     gap: 0.6rem;
 }
 
-/* сердечко */
+
 .product-card__fav {
     background: rgba(255, 255, 255, 0.95);
     border: 1px solid #ddd;
@@ -135,7 +125,7 @@
     transform: scale(1.1);
 }
 
-/* плюсик */
+
 .product-card__add {
     background: #111;
     color: #fff;
@@ -167,13 +157,10 @@
 @media (min-width: 1900px) {
     .product-card {
         width: 340px;
-        /* шире */
         height: 500px;
-        /* выше */
     }
 
     .product-card__image-wrapper {
         height: 220px;
-        /* пропорционально выше картинка */
     }
 }

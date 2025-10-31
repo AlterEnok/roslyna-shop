@@ -84,7 +84,7 @@
     transition: opacity 1s ease, transform 1.2s ease 0.2s, filter 1s ease;
 }
 
-/* Нижний текстовый блок */
+
 .categories__text {
     max-width: 700px;
     margin: 6rem auto 0;

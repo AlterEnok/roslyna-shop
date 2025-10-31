@@ -9,7 +9,7 @@ import "./ProductCard.css";
 function ProductCard({ product }) {
     const { user } = useContext(AuthContext);
     const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
-    const { wishlist, toggleWishlist } = useContext(WishlistContext);
+    const { wishlist, toggleWishlist, removeFromWishlist } = useContext(WishlistContext);
     const navigate = useNavigate();
 
     const isInCart = cartItems.some((item) => item.id === product.id);
@@ -18,8 +18,14 @@ function ProductCard({ product }) {
     const handleAddClick = (e) => {
         e.preventDefault();
         e.stopPropagation();
+
         if (!isInCart) {
             addToCart(product);
+
+
+            if (isInWishlist) {
+                removeFromWishlist(product.id);
+            }
         } else {
             removeFromCart(product.id);
         }
@@ -28,15 +34,22 @@ function ProductCard({ product }) {
     return (
         <Link to={`/product/${product.id}`} className="product-card">
             <div className="product-card__image-wrapper">
-                <img src={product.image} alt={product.title} className="product-card__image" />
+                <img
+                    src={product.image}
+                    alt={product.title}
+                    className="product-card__image"
+                />
             </div>
 
             <div className="product-card__info">
                 <h2 className="product-card__title">{product.title}</h2>
-                {product.subtitle && <p className="product-card__subtitle">{product.subtitle}</p>}
+                {product.subtitle && (
+                    <p className="product-card__subtitle">{product.subtitle}</p>
+                )}
 
                 <div className="product-card__actions">
                     <span className="product-card__price">{product.price} грн</span>
+
                     <div className="product-card__buttons">
                         {user && (
                             <button
@@ -50,6 +63,7 @@ function ProductCard({ product }) {
                                 <FaHeart />
                             </button>
                         )}
+
                         <button
                             className={`product-card__add ${isInCart ? "added" : ""}`}
                             onClick={handleAddClick}

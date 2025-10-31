@@ -38,11 +38,16 @@
 .footer__desc {
     font-weight: 400;
     font-size: 20px;
-    line-height: 120%;
-    letter-spacing: -0.09em;
+    line-height: 130%;
+    letter-spacing: -0.03em;
     color: #3d5f3e;
     font-family: "Montserrat", sans-serif;
-    ;
+}
+
+.footer__desc-gap {
+    display: block;
+    margin-top: 10px;
+
 }
 
 .footer__socials {
@@ -96,6 +101,24 @@
     color: #2a9d5f;
 }
 
+.footer__link {
+    background: none;
+    border: none;
+    padding: 0;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 150%;
+    color: #3d5f3e;
+    cursor: pointer;
+    transition: 0.3s;
+    font-family: inherit;
+    text-align: left;
+}
+
+.footer__link:hover {
+    color: #2a9d5f;
+}
+
 /* Блог */
 .footer__blog {
     max-width: 260px;
@@ -126,6 +149,28 @@
     background: #2a9d5f;
     color: #fff;
     border-color: #2a9d5f;
+}
+
+.footer__schedule {
+    font-size: 16px;
+    line-height: 150%;
+    color: #3d5f3e;
+    font-family: "Montserrat", sans-serif;
+    margin-top: 20px;
+    border-top: 1px solid #e5e5e5;
+    padding-top: 14px;
+}
+
+.footer__schedule p {
+    margin: 5px 0;
+    font-weight: 400;
+}
+
+.footer__schedule .footer__title {
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: 600;
+    color: #111827;
 }
 
 /* Копирайт */
@@ -174,6 +219,11 @@
         width: 220px;
     }
 
+    .footer__link {
+        font-size: 20px;
+        font-weight: 400;
+    }
+
     .footer__desc {
         font-size: 24px;
         line-height: 130%;
@@ -189,7 +239,7 @@
         margin-bottom: 20px;
     }
 
-    .footer__nav a {
+    .footer .footer__nav a {
         font-size: 20px;
         line-height: 160%;
     }
@@ -209,6 +259,10 @@
         height: 60px;
         font-size: 22px;
         padding: 12px 28px;
+    }
+
+    .footer__schedule {
+        font-size: 23px;
     }
 
     .footer__copyright {
@@ -232,6 +286,16 @@
     .footer__blog {
         align-items: center;
         text-align: center;
+    }
+
+    .footer__link {
+        text-align: center;
+        font-size: 16px;
+        display: inline-block;
+    }
+
+    .footer__schedule {
+        font-size: 15px;
     }
 }
 
@@ -267,6 +331,11 @@
         height: 45px;
         font-size: 15px;
     }
+
+    .footer__link {
+        font-size: 15px;
+        text-align: center;
+    }
 }
 
 
@@ -289,6 +358,11 @@
 
     .footer__nav a {
         font-size: 14px;
+    }
+
+    .footer__link {
+        font-size: 14px;
+        text-align: center;
     }
 
     .footer__socials {

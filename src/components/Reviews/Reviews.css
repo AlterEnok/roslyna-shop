@@ -133,6 +133,62 @@
 }
 
 
+@media (min-width: 1900px) and (max-width: 3500px) {
+    .review-section {
+        padding: 6rem 4rem;
+    }
+
+    .review-section__left {
+        max-width: 780px;
+        padding: 3rem 2.5rem;
+        border-radius: 2rem 0 0 2rem;
+    }
+
+    .review-section__right {
+        max-width: 720px;
+    }
+
+    .review-section__right img {
+        border-radius: 0 2rem 2rem 0;
+    }
+
+    .review-section__subtitle {
+        font-size: 1.2rem;
+    }
+
+    .review-section__desc {
+        font-size: 1.1rem;
+        line-height: 1.6;
+    }
+
+    .review-section__author {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+    }
+
+    .review-section__text {
+        font-size: 2.2rem;
+        line-height: 1.8;
+    }
+
+    .review-section__buttons {
+        gap: 1.2rem;
+        margin-top: 6rem;
+    }
+
+    .review-section__buttons button {
+        width: 64px;
+        height: 64px;
+        font-size: 2rem;
+    }
+
+    .swiper-pagination-bullet {
+        width: 14px;
+        height: 14px;
+    }
+}
+
+
 /* Адаптив */
 @media (max-width: 768px) {
     .review-section {

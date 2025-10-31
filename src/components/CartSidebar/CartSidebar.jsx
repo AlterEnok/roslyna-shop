@@ -1,6 +1,8 @@
+import { Link, useNavigate } from 'react-router-dom';
 import './CartSidebar.css';
 import { useEffect, useContext } from 'react';
 import CartContext from '../../context/CartContext';
+import AuthContext from '../../context/AuthContext';
 
 function CartSidebar() {
     const {
@@ -12,25 +14,34 @@ function CartSidebar() {
         closeCart,
     } = useContext(CartContext);
 
+    const { user, setIsAuthModalOpen } = useContext(AuthContext);
+    const navigate = useNavigate();
+
     const total = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-    // блокировка скролла страницы при открытой корзине
     useEffect(() => {
-        if (isCartOpen) {
-            document.body.style.overflow = 'hidden';
-        } else {
-            document.body.style.overflow = '';
-        }
-        return () => {
-            document.body.style.overflow = '';
-        };
+        document.body.style.overflow = isCartOpen ? 'hidden' : '';
+        return () => (document.body.style.overflow = '');
     }, [isCartOpen]);
+
+    const handleCheckout = () => {
+        if (!user) {
+
+            closeCart();
+            setIsAuthModalOpen(true);
+            return;
+        }
+
+
+        closeCart();
+        navigate('/checkout');
+    };
 
     return (
         <aside className={`cart-sidebar ${isCartOpen ? 'cart-sidebar--open' : ''}`}>
             <div className="cart-header">
                 <h2>Кошик</h2>
-                <button className="cart-close" onClick={closeCart} aria-label="Закрити корзину">
+                <button className="cart-close" onClick={closeCart}>
                     ×
                 </button>
             </div>
@@ -39,25 +50,56 @@ function CartSidebar() {
                 <p className="cart-empty">Ваш кошик порожній</p>
             ) : (
                 <div className="cart-items">
-                    {cartItems.map(item => (
+                    {cartItems.map((item) => (
                         <div className="cart-item" key={item.id}>
-                            <img src={item.image} alt={item.title} className="cart-item__image" />
+
+                            <Link
+                                to={`/product/${item.id}`}
+                                onClick={() => {
+                                    closeCart();
+                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                                }}
+                            >
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    className="cart-item__image"
+                                />
+                            </Link>
+
                             <div className="cart-item__details">
-                                <h4 className="cart-item__name">{item.title}</h4>
+                                <Link
+                                    to={`/product/${item.id}`}
+                                    onClick={() => {
+                                        closeCart();
+                                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                                    }}
+                                    className="cart-item__name"
+                                >
+                                    {item.title}
+                                </Link>
+
                                 {item.subtitle && (
                                     <p className="cart-item__subtitle">{item.subtitle}</p>
                                 )}
+
+                                {item.code && (
+                                    <p className="cart-item__code">Код товару: <span>{item.code}</span></p>
+                                )}
+
+
                                 <p className="cart-item__price">{item.price} ₴</p>
+
                                 <div className="cart-item__qty">
                                     <button onClick={() => decrementItem(item.id)}>-</button>
                                     <span>{item.quantity}</span>
                                     <button onClick={() => incrementItem(item.id)}>+</button>
                                 </div>
                             </div>
+
                             <button
                                 className="cart-item__remove"
                                 onClick={() => removeFromCart(item.id)}
-                                aria-label="Remove item"
                             >
                                 ×
                             </button>
@@ -70,7 +112,11 @@ function CartSidebar() {
                 </div>
             )}
 
-            <button className="checkout-btn" disabled={cartItems.length === 0}>
+            <button
+                className="checkout-btn"
+                disabled={cartItems.length === 0}
+                onClick={handleCheckout}
+            >
                 Оформити покупку
             </button>
         </aside>

@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import "./Certificate.css";
 import Footer from "../../components/Footer/Footer";
+import usePageTitle from "../../hooks/usePageTitle";
 
 import cert1 from "../../assets/cert1.png";
 import cert2 from "../../assets/cert2.png";
 
 function Certificates() {
+    usePageTitle("Сертифікати");
     const [selectedImage, setSelectedImage] = useState(null);
 
     const openImage = (src) => {

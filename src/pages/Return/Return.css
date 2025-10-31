@@ -44,7 +44,7 @@
     color: #a9f3be;
 }
 
-/* 📱 Адаптив */
+/*  Адаптив */
 @media (max-width: 768px) {
     .return-page {
         padding: 6rem 1.5rem;

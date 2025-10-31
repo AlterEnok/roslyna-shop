@@ -1,0 +1,512 @@
+.delivery {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    min-height: 100vh;
+
+}
+
+.delivery__wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: nowrap;
+}
+
+.delivery__summary {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 16px;
+    padding: 30px;
+    color: #fff;
+    width: 300px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(10px);
+    animation: fadeIn 0.6s ease;
+}
+
+.delivery__summary h3 {
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.summary__details p {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 15px;
+}
+
+.summary__line {
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 15px 0;
+}
+
+.summary__note {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+.delivery__card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 56px;
+    padding: 40px;
+    width: 100%;
+    max-width: 520px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    animation: fadeIn 0.6s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.delivery__title {
+    text-align: center;
+    font-size: 28px;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+.delivery__section {
+    margin-bottom: 25px;
+}
+
+.delivery__options {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.delivery__icon {
+    width: 22px;
+    height: 22px;
+    object-fit: contain;
+    transition: transform 0.2s ease;
+}
+
+.delivery__options label:hover .delivery__icon {
+    transform: scale(1.1);
+}
+
+.delivery__options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 8px 14px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+.delivery__options input[type="radio"] {
+    accent-color: #3fcf5f;
+}
+
+.delivery__options label:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+}
+
+
+
+.delivery__inputs input,
+.delivery__inputs select {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 15px;
+    transition: 0.25s ease;
+
+
+}
+
+.delivery__inputs select option {
+    background: #1f3122;
+    color: #fff;
+    white-space: normal;
+    line-height: 1.3;
+
+
+}
+
+.delivery__inputs select option:hover {
+    background: rgba(63, 207, 95, 0.2);
+
+}
+
+.delivery__inputs input:focus,
+.delivery__inputs select:focus {
+    border-color: #3fcf5f;
+    background: rgba(63, 207, 95, 0.1);
+    box-shadow: 0 0 8px rgba(63, 207, 95, 0.3);
+    outline: none;
+
+
+}
+
+.city-search {
+    position: relative;
+
+}
+
+.city-search input {
+    width: 100%;
+    padding: 12px 14px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 15px;
+    transition: 0.25s ease;
+
+}
+
+.city-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    max-height: 220px;
+    overflow-y: auto;
+    background: rgba(18, 29, 20, 0.95);
+    border-radius: 8px;
+    margin-top: 4px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
+    z-index: 1000;
+    animation: dropdownFade 0.25s ease;
+
+}
+
+@keyframes dropdownFade {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.city-option {
+    padding: 10px 14px;
+    cursor: pointer;
+    transition: background 0.25s ease;
+
+}
+
+.city-option:hover {
+    background: rgba(63, 207, 95, 0.2);
+}
+
+.delivery__button {
+    width: 100%;
+    padding: 14px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #3fcf5f, #2da64a);
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 10px rgba(63, 207, 95, 0.3);
+}
+
+.delivery__button:hover {
+    background: linear-gradient(135deg, #4eea70, #36b55a);
+    transform: translateY(-2px);
+}
+
+
+
+@media (min-width: 1900px) and (max-width: 3500px) {
+    .delivery {
+        padding: 100px 80px;
+    }
+
+    .delivery__wrapper {
+        gap: 80px;
+    }
+
+    .delivery__card {
+        max-width: 650px;
+        padding: 60px;
+    }
+
+    .delivery__summary {
+        width: 380px;
+        padding: 40px;
+    }
+
+    .summary__note {
+        font-size: 16px;
+    }
+
+    .delivery__title {
+        font-size: 34px;
+    }
+
+    .delivery__inputs input,
+    .delivery__inputs select {
+        font-size: 17px;
+        padding: 16px;
+    }
+
+    .delivery__button {
+        font-size: 18px;
+        padding: 18px;
+    }
+}
+
+@media (max-width: 768px) {
+    .delivery {
+        padding: 40px 16px;
+        flex-direction: column;
+    }
+
+    .delivery__wrapper {
+        flex-direction: column-reverse;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .delivery__card {
+        width: 100%;
+        max-width: 500px;
+        padding: 24px;
+    }
+
+    .delivery__summary {
+        width: 100%;
+        max-width: 400px;
+        padding: 20px;
+    }
+
+    .delivery__title {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .delivery__options label {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .delivery__inputs input,
+    .delivery__inputs select,
+    .delivery__inputs textarea {
+        font-size: 14px;
+        padding: 10px 12px;
+    }
+
+    .delivery__inputs textarea {
+        min-height: 90px;
+    }
+
+    .delivery__inputs select {
+        max-width: 100%;
+    }
+
+    .delivery__inputs select[name="department"],
+    .delivery__inputs select[name="city"] {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto 12px;
+        display: block;
+    }
+
+    .delivery__button {
+        padding: 12px;
+        font-size: 15px;
+    }
+
+    .delivery__inputs select option {
+        background: #1f3122;
+        color: #fff;
+        font-size: 12px;
+        white-space: normal;
+        line-height: 1.2;
+        padding: 4px;
+        max-height: 30px;
+    }
+
+    select {
+        max-height: 180px;
+        overflow-y: auto;
+    }
+}
+
+
+@media (max-width: 480px) {
+    .delivery {
+        padding: 30px 10px;
+    }
+
+    .delivery__wrapper {
+        flex-direction: column-reverse;
+    }
+
+    .delivery__card {
+        padding: 20px 16px;
+    }
+
+    .delivery__summary {
+        padding: 16px;
+    }
+
+    .delivery__title {
+        font-size: 22px;
+    }
+
+    .delivery__options {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .delivery__options label {
+        justify-content: flex-start;
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .delivery__icon {
+        width: 20px;
+        height: 20px;
+    }
+
+    .delivery__inputs input,
+    .delivery__inputs select,
+    .delivery__inputs textarea {
+        font-size: 13px;
+        padding: 8px 10px;
+    }
+
+    .delivery__inputs textarea {
+        min-height: 80px;
+    }
+
+    .delivery__inputs select option {
+        font-size: 11px;
+        max-height: 25px;
+    }
+
+    select {
+        max-height: 150px;
+    }
+
+    .delivery__inputs select[name="department"],
+    .delivery__inputs select[name="city"] {
+        width: 90%;
+        margin: 0 auto 12px;
+    }
+
+    .delivery__button {
+        padding: 12px;
+        font-size: 14px;
+    }
+
+    .summary__details p {
+        font-size: 14px;
+    }
+}
+
+
+@media (max-width: 360px) {
+
+    .delivery__card,
+    .delivery__summary {
+        padding: 14px;
+    }
+
+    .delivery__title {
+        font-size: 20px;
+    }
+
+    .delivery__inputs input,
+    .delivery__inputs select,
+    .delivery__inputs textarea {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    .delivery__inputs textarea {
+        min-height: 70px;
+    }
+
+    .delivery__inputs select[name="department"],
+    .delivery__inputs select[name="city"] {
+        width: 100%;
+    }
+
+    .delivery__button {
+        font-size: 13px;
+        padding: 10px;
+    }
+
+    .summary__details p {
+        font-size: 13px;
+    }
+}
+
+
+
+select {
+    max-height: 240px !important;
+    overflow-y: auto !important;
+}
+
+
+select option {
+    white-space: normal !important;
+    word-break: break-word;
+    font-size: 14px;
+    padding: 6px 10px;
+}
+
+
+.delivery__inputs select {
+    max-width: 100%;
+    width: 100%;
+    display: block;
+    overflow: hidden;
+}
+
+
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.delivery__inputs select {
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg fill='white' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 16px;
+    padding-right: 36px;
+}

@@ -14,7 +14,7 @@ function LocationSection() {
                 <h2 className="location__title">Де ми є</h2>
                 <div className="location__icons">
                     <a
-                        href="https://t.me/yourchannel"
+                        href="https://t.me/tanya_oprysko"
                         target="_blank"
                         rel="noreferrer"
                         className="location__icon"
@@ -22,7 +22,7 @@ function LocationSection() {
                         <FontAwesomeIcon icon={faTelegramPlane} />
                     </a>
                     <a
-                        href="https://instagram.com/yourprofile"
+                        href="https://www.instagram.com/tanya.opryshko?igsh=MXZwYWExcTYzZXhpcQ%3D%3D&utm_source=qr"
                         target="_blank"
                         rel="noreferrer"
                         className="location__icon"
@@ -30,7 +30,7 @@ function LocationSection() {
                         <FontAwesomeIcon icon={faInstagram} />
                     </a>
                     <a
-                        href="https://facebook.com/yourpage"
+                        href="https://www.facebook.com/share/1CcrzFPKiq/?mibextid=wwXIfr"
                         target="_blank"
                         rel="noreferrer"
                         className="location__icon"
@@ -38,7 +38,7 @@ function LocationSection() {
                         <FontAwesomeIcon icon={faFacebook} />
                     </a>
                     <a
-                        href="https://www.tiktok.com/@yourprofile"
+                        href="https://www.tiktok.com/@tanya_opryshko?_t=ZM-90pcwNzlzcO&_r=1"
                         target="_blank"
                         rel="noreferrer"
                         className="location__icon"

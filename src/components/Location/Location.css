@@ -66,6 +66,44 @@
     top: 52px;
 }
 
+
+@media (min-width: 1900px) and (max-width: 3500px) {
+    .location {
+        height: 620px;
+        max-width: 1500px;
+        border-radius: 120px;
+        margin: 100px auto;
+        background-position: center 40%;
+    }
+
+    .location__overlay {
+        padding: 80px 60px;
+    }
+
+    .location__title {
+        font-size: 140px;
+        line-height: 1.2;
+        margin-bottom: 40px;
+        letter-spacing: 3px;
+    }
+
+    .location__icons {
+        gap: 40px;
+        margin-bottom: 30px;
+    }
+
+    .location__icon {
+        width: 84px;
+        height: 84px;
+        font-size: 34px;
+    }
+
+    .location__place {
+        font-size: 28px;
+        top: 80px;
+    }
+}
+
 @media(max-width: 768px) {
     .location {
         margin-left: 10px;

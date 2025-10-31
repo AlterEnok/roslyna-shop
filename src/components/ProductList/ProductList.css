@@ -3,15 +3,6 @@
     text-align: center;
 }
 
-/* .product-list__grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 4rem;
-    justify-content: center;
-    align-items: stretch;
-    max-width: 1200px;
-    margin: 0 auto;
-} */
 
 .product-list__grid {
     display: grid;
@@ -88,9 +79,7 @@
 
     .product-list__grid {
         max-width: 1600px;
-        /* увеличиваем ширину контейнера */
         grid-template-columns: repeat(4, 1fr);
-        /* фиксируем 4 карточки */
     }
 }
 

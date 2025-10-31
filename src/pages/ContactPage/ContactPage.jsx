@@ -3,11 +3,14 @@ import "./ContactPage.css";
 import Footer from "../../components/Footer/Footer";
 import heroImg from "../../assets/hero-contact.jpg";
 import mapUkraine from "../../assets/ukraine-map.svg";
+import usePageTitle from "../../hooks/usePageTitle";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTelegramPlane, faInstagram, faFacebook, faTiktok } from "@fortawesome/free-brands-svg-icons";
 
 function ContactPage() {
+    usePageTitle("Контакти");
+
     return (
         <section className="contact-page">
 
@@ -21,7 +24,7 @@ function ContactPage() {
                 <div className="contact-bottom-overlay"></div>
             </div>
 
-            {/* 🔹 Блок контактов */}
+
             <div className="contact-info">
                 <div className="contact-card big">
                     <span className="contact-label">Пошта</span>
@@ -48,16 +51,16 @@ function ContactPage() {
 
                 {/* 🔹 Соцсети */}
                 <div className="contact-socials">
-                    <a href="https://t.me/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://t.me/tanya_oprysko" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faTelegramPlane} />
                     </a>
-                    <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.instagram.com/tanya.opryshko?igsh=MXZwYWExcTYzZXhpcQ%3D%3D&utm_source=qr" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faInstagram} />
                     </a>
-                    <a href="https://tiktok.com/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.tiktok.com/@tanya_opryshko?_t=ZM-90pcwNzlzcO&_r=1" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faTiktok} />
                     </a>
-                    <a href="https://facebook.com/" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.facebook.com/share/1CcrzFPKiq/?mibextid=wwXIfr" target="_blank" rel="noopener noreferrer">
                         <FontAwesomeIcon icon={faFacebook} />
                     </a>
                 </div>

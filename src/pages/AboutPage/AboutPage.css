@@ -27,7 +27,6 @@
     width: 100%;
     height: 100%;
     background: rgba(22, 44, 30, 0.25);
-    /* 👈 лёгкий общий оверлей */
     z-index: 0;
 }
 
@@ -58,7 +57,7 @@
     z-index: 2;
 }
 
-/* Основной блок */
+
 .about-body {
     max-width: 1445px;
     height: 675px;
@@ -102,7 +101,7 @@
     gap: 2rem;
 }
 
-/* Текст */
+
 .about-text {
     flex: 1;
     color: #fff;
@@ -116,9 +115,7 @@
 .about-text h2 {
     margin-bottom: 1rem;
     font-size: 30px;
-    /* фигма */
     font-weight: 900;
-    /* жирный */
     letter-spacing: 0.02em;
     color: #fff;
 }
@@ -171,10 +168,8 @@
 
 
 
-
 .about-partners {
     max-width: 1399px;
-    height: 817px;
     margin: 80px auto;
     padding: 2rem;
     display: flex;
@@ -206,11 +201,24 @@
     flex: 1.2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    overflow-y: auto;
     gap: 1.5rem;
     color: #fff;
     font-size: 1.1rem;
     line-height: 1.6;
+    max-height: 750px;
+    padding-right: 6px;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+}
+
+.partners-text::-webkit-scrollbar {
+    width: 6px;
+}
+
+.partners-text::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 10px;
 }
 
 .partners-box {
@@ -240,11 +248,8 @@
 
 
 
-
-
 .about-cta {
     position: relative;
-    /* нужно для абсолютной кнопки */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -280,11 +285,10 @@
     vertical-align: middle;
 }
 
-/* Кнопка с эффектом из hero */
+
 .cta-button {
     position: absolute;
     bottom: -25px;
-    /* наполовину выносит кнопку из блока */
     left: 50%;
     transform: translateX(-50%);
     display: inline-block;
@@ -372,7 +376,7 @@
         padding: 16px 32px;
     }
 
-    /* 🔹 Блок "Партнери / Клієнти" */
+
     .about-partners {
         max-width: 1800px;
         height: 1000px;
@@ -400,7 +404,7 @@
         box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
     }
 
-    /* 🔹 CTA блок */
+
     .cta-box {
         width: 1300px;
         height: 450px;
@@ -460,7 +464,7 @@
         gap: 1.5rem;
     }
 
-    /* 🔽 Блок для партнерів і клієнтів */
+
     .about-partners {
         flex-direction: column;
         align-items: center;
@@ -477,21 +481,19 @@
         font-size: 1rem;
     }
 
-    /* 🔽 Меняем порядок: текст → картинка → текст */
+
     .partners-text .partners-box:nth-child(1) {
         order: 1;
-        /* Для партнерів */
     }
 
     .partners-img {
         order: 0;
-        /* Картинка */
         width: 100%;
     }
 
     .partners-text .partners-box:nth-child(2) {
         order: 3;
-        /* Для клієнтів */
+
     }
 
     .partners-box h3 {
@@ -507,7 +509,7 @@
         height: auto;
     }
 
-    /* CTA блок */
+
     .cta-box {
         width: 95%;
         height: auto;
@@ -525,7 +527,7 @@
     }
 }
 
-/* 📱 Маленькие телефоны */
+
 @media (max-width: 480px) {
     .about-title {
         font-size: 72px;

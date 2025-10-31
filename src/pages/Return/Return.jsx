@@ -1,8 +1,10 @@
 import React from "react";
 import "./Return.css";
 import Footer from "../../components/Footer/Footer";
+import usePageTitle from "../../hooks/usePageTitle";
 
 function ReturnExchange() {
+    usePageTitle("Повернення та обмін");
 
     return (
         <>

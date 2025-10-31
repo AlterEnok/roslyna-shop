@@ -18,6 +18,28 @@ body {
 
 }
 
+::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f5faf7;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #fbfdfd;
+  border-radius: 20px;
+  border: 3px solid #0e0d0d;
+  background-clip: padding-box;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #066c2d;
+}
+
 a {
   text-decoration: none;
   color: inherit;

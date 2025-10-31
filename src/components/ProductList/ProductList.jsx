@@ -14,6 +14,7 @@ function ProductList({ addToCart, isLoggedIn, noTitle, products }) {
     const defaultProducts = [
         {
             id: 1,
+            code: "A001",
             title: "Рослина карпат: 6 в одному",
             subtitle: "Евкаліпт,чорний горіх,пижма,розторопша",
             price: 2490,
@@ -21,6 +22,7 @@ function ProductList({ addToCart, isLoggedIn, noTitle, products }) {
         },
         {
             id: 2,
+            code: "A002",
             title: "L-Карнітин PRO",
             subtitle: "Евкаліпт,чорний горіх,пижма,розторопша",
             price: 2690,
@@ -28,6 +30,7 @@ function ProductList({ addToCart, isLoggedIn, noTitle, products }) {
         },
         {
             id: 3,
+            code: "A003",
             title: "Журавлина СИРОП",
             subtitle: "Підтримка імунітету та здоров’я",
             price: 2590,
@@ -35,6 +38,7 @@ function ProductList({ addToCart, isLoggedIn, noTitle, products }) {
         },
         {
             id: 4,
+            code: "A004",
             title: "Антивірин Муршине дерево",
             subtitle: "Підтримка імунітету та здоров’я",
             price: 2590,
@@ -42,8 +46,14 @@ function ProductList({ addToCart, isLoggedIn, noTitle, products }) {
         }
     ];
 
+
     // если передали products — используем их, иначе дефолтные
-    const renderProducts = products && products.length > 0 ? products : defaultProducts;
+    const renderProducts = (products && products.length > 0 ? products : defaultProducts)
+        .map((p, i) => ({
+            ...p,
+            code: p.code || `A${String(p.id || i + 1).padStart(3, "0")}`, // автогенерация кода
+        }));
+
 
     return (
         <section className="product-list">

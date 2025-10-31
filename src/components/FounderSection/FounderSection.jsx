@@ -35,7 +35,7 @@ export default function FounderSection() {
     return (
         <section className="founder" ref={sectionRef}>
             <div className="founder__container">
-                {/* Фото и круги */}
+
                 <div className={`founder__image ${visible ? "show" : ""}`}>
                     <img src={founderImg} alt="Тетяна Опришко" className="founder__photo" />
 
@@ -52,7 +52,7 @@ export default function FounderSection() {
                     </div>
                 </div>
 
-                {/* Контент с поочередным появлением */}
+
                 <div className={`founder__content ${visible ? "show" : ""}`}>
                     <span className="founder__role">Засновник</span>
 

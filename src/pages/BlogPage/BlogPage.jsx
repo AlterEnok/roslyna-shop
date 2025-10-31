@@ -2,9 +2,11 @@ import React from "react";
 import "./BlogPage.css";
 import blogHero from "../../assets/blog-hero.jpg";
 import Footer from "../../components/Footer/Footer";
+import usePageTitle from "../../hooks/usePageTitle";
 import blog1Img from "../../assets/blog1.jpg";
 
 function BlogPage() {
+    usePageTitle("Блог");
     return (
         <div className="blog-page">
             <section
