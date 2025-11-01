@@ -13,6 +13,7 @@ import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import { Helmet } from "react-helmet-async";
 
 import usePageTitle from "../../hooks/usePageTitle";
 
@@ -114,6 +115,22 @@ function ProductPage({ addToCart }) {
 
     return (
         <>
+
+            <Helmet>
+                <title>{product.title} | Рослина Карпат</title>
+                <meta
+                    name="description"
+                    content="Купити Антивирін — натуральний противірусний засіб від компанії Рослина Карпат. Доставка по всій Україні."
+                />
+                <meta
+                    name="keywords"
+                    content="Антивирін, натуральні препарати, Рослина Карпат, противірусний засіб, БАД, здоров’я"
+                />
+                <meta property="og:title" content={`${product.title} | Рослина Карпат`} />
+                <meta property="og:description" content={product.description} />
+                <meta property="og:image" content={product.images[0]} />
+                <meta property="og:type" content="product" />
+            </Helmet>
             <section className="product-page">
                 <div className="product-page__container">
 

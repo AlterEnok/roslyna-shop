@@ -4,6 +4,8 @@ import { useCart } from "../../context/useCart";
 import { useNavigate } from "react-router-dom";
 import Footer from "../../components/Footer/Footer";
 import usePageTitle from "../../hooks/usePageTitle";
+import { Helmet } from "react-helmet-async";
+
 
 import novaPoshta from "../../assets/nova-poshta.png";
 import ukrPoshta from "../../assets/ukrposhta.png";
@@ -129,6 +131,25 @@ function DeliveryPaymentPage() {
 
     return (
         <>
+
+            <Helmet>
+                <title>Доставка та оплата | Рослина Карпат</title>
+                <meta
+                    name="description"
+                    content="Інформація про доставку та оплату продукції Рослина Карпат. Доставка Новою Поштою або Укрпоштою по всій Україні. Зручна онлайн-оплата або накладений платіж."
+                />
+                <meta
+                    name="keywords"
+                    content="Рослина Карпат, доставка, оплата, Нова Пошта, Укрпошта, натуральні препарати, трави, Карпати"
+                />
+                <meta property="og:title" content="Доставка та оплата | Рослина Карпат" />
+                <meta
+                    property="og:description"
+                    content="Дізнайтесь про способи доставки та оплати натуральних засобів від Рослина Карпат. Швидко, зручно, по всій Україні."
+                />
+
+            </Helmet>
+
             <section className="delivery">
                 <div className="delivery__wrapper">
                     <div className="delivery__card">

@@ -7,6 +7,7 @@ import background from "../../assets/profile-background.jpg";
 import Footer from "../../components/Footer/Footer";
 import ReCAPTCHA from "react-google-recaptcha";
 import usePageTitle from "../../hooks/usePageTitle";
+import { Helmet } from "react-helmet-async";
 
 function ProfilePage() {
     usePageTitle("Профіль");
@@ -89,6 +90,27 @@ function ProfilePage() {
 
     return (
         <>
+
+            <Helmet>
+                <title>Профіль користувача | Рослина Карпат</title>
+                <meta
+                    name="description"
+                    content="Ваш особистий профіль у магазині Рослина Карпат. Редагуйте свої дані, переглядайте покупки та керуйте обліковим записом."
+                />
+                <meta
+                    name="keywords"
+                    content="профіль, обліковий запис, користувач, покупки, рослина карпат"
+                />
+                <meta property="og:title" content="Профіль користувача | Рослина Карпат" />
+                <meta
+                    property="og:description"
+                    content="Особистий кабінет користувача в інтернет-магазині Рослина Карпат. Керуйте контактними даними та історією замовлень."
+                />
+                <meta property="og:image" content={background} />
+                <meta property="og:type" content="website" />
+            </Helmet>
+
+
             {successMsg && <div className="popup success-popup">{successMsg}</div>}
             {errorMsg && <div className="popup error-popup">{errorMsg}</div>}
 

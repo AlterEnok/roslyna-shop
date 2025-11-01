@@ -6,6 +6,7 @@ import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";
 import usePageTitle from "../../hooks/usePageTitle";
 import Footer from "../../components/Footer/Footer";
+import { Helmet } from "react-helmet-async";
 
 function CheckoutPage() {
     usePageTitle("Оформлення замовлення");
@@ -51,6 +52,26 @@ function CheckoutPage() {
 
     return (
         <>
+
+            <Helmet>
+                <title>Оформлення замовлення | Рослина Карпат</title>
+                <meta
+                    name="description"
+                    content="Оформіть замовлення на натуральні засоби та трави від компанії Рослина Карпат. Швидка доставка по всій Україні."
+                />
+                <meta
+                    name="keywords"
+                    content="Рослина Карпат, оформлення замовлення, купити трави, натуральні препарати, карпатські збори, доставка"
+                />
+                <meta property="og:title" content="Оформлення замовлення | Рослина Карпат" />
+                <meta
+                    property="og:description"
+                    content="Оформіть своє замовлення на сайті Рослина Карпат — натуральні засоби з Карпат із доставкою по Україні."
+                />
+
+                <meta property="og:type" content="website" />
+            </Helmet>
+
             <section className="checkout">
                 <div className="checkout__container">
 

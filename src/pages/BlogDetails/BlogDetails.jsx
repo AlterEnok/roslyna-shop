@@ -5,12 +5,35 @@ import blog1Img from "../../assets/blog1.jpg";
 import blog2Img from "../../assets/blog2.jpg";
 import blog3Img from "../../assets/blog3.jpg";
 import usePageTitle from "../../hooks/usePageTitle";
+import { Helmet } from "react-helmet-async";
 
 
 function BlogDetails1() {
     usePageTitle("Змініюй життя разом з нами");
     return (
         <div className="blog-details">
+
+            <Helmet>
+                <title>Змініюй життя разом з нами | Рослина Карпат</title>
+                <meta
+                    name="description"
+                    content="Історія Тетяни Опрішко — як звичайна мама стала лідером команди в компанії Рослина Карпат. Дізнайтеся, як змінити своє життя та приєднатися до українського бізнесу з натуральними фітопрепаратами."
+                />
+                <meta
+                    name="keywords"
+                    content="рослина карпат, блог, змініюй життя, бізнес для жінок, фітопрепарати, історія успіху"
+                />
+                <meta property="og:title" content="Змініюй життя разом з нами | Рослина Карпат" />
+                <meta
+                    property="og:description"
+                    content="Історія успіху Тетяни Опрішко — від мами до лідера команди. Приєднуйтесь до компанії Рослина Карпат та змінюйте життя разом із нами."
+                />
+                <meta property="og:image" content={blog1Img} />
+                <meta property="og:type" content="article" />
+                <meta name="author" content="Тетяна Опрішко" />
+                <meta name="robots" content="index, follow" />
+            </Helmet>
+
             <div className="blog-details__inner">
                 <section className="blog-details__header">
                     <h2 className="blog-details__author">Тетяна Опрішко</h2>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./PurchasesPage.css";
 import Footer from "../../components/Footer/Footer";
 import usePageTitle from "../../hooks/usePageTitle";
+import { Helmet } from "react-helmet-async";
 
 const PurchasesPage = () => {
     usePageTitle("Мої покупки");
@@ -30,6 +31,33 @@ const PurchasesPage = () => {
 
     return (
         <>
+
+            <Helmet>
+                <title>Мої покупки | Рослина Карпат</title>
+                <meta
+                    name="description"
+                    content="Перегляньте історію своїх замовлень у Рослина Карпат. Тут ви можете бачити статуси, дати та суми своїх покупок."
+                />
+                <meta
+                    name="keywords"
+                    content="мої покупки, історія замовлень, покупки Рослина, Рослина Карпат, замовлення, статус замовлення"
+                />
+                <meta property="og:title" content="Мої покупки | Roslyna Shop" />
+                <meta
+                    property="og:description"
+                    content="Перегляньте всі ваші попередні замовлення в Рослина Карпат — зручно, швидко та прозоро."
+                />
+                <meta property="og:type" content="website" />
+
+
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Мої покупки | Рослина Карпат" />
+                <meta
+                    name="twitter:description"
+                    content="Перегляньте історію своїх покупок у Рослина Карпат."
+                />
+
+            </Helmet>
             <div className="purchases-page">
                 <div className="purchases-container">
                     <h2 className="purchases-title">Мої покупки</h2>
